@@ -12,4 +12,10 @@
 		<item value="org.eclipse.rcp:4.4.0.v20140606-1445"/>
 		<item value="org.python.pydev.feature:3.6.0.201406221719"/>
 	</list>
+	<section name="NewWizardAction">
+		<item value="org.python.pydev.ui.wizards.project.PythonProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.python.pydev.PythonCategory"/>
+		</list>
+	</section>
 </section>
