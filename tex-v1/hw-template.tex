@@ -41,7 +41,7 @@ Let $w=k [0, 1, 1]^T$. Then,
 \[
 \|w\|=k\|[0, 1, 1]^T\|=\sqrt{2}k
 \]
-Since the maring is $\sqrt{2}$,
+Since the margin is $\sqrt{2}$,
 \[
 \sqrt{2}=\frac{1}{\|w\|}=\frac{1}{\sqrt{2}k}
 \]
@@ -76,7 +76,7 @@ The answer is $2k$.
 
 {\bf Proof:}
 
-Let $VC(k)$ be the VC dimension for $k$ disjoint intervals in a real line. I prove by indiction that $VC(k)=2k$ in the following. When $k=1$, two examples have four patterns in total, and all the cases can be correctly classified (Figure.\ref{fig:vc_dimension1}). Thus, $VC(1)=2$, which satisifies my hypothesis. 
+Let $VC(k)$ be the VC dimension for $k$ disjoint intervals in a real line. I prove by indiction that $VC(k)=2k$ in the following. When $k=1$, two examples have four patterns in total, and all the cases can be correctly classified (Figure \ref{fig:vc_dimension1}). Thus, $VC(1)=2$, which satisifies the above hypothesis. 
 
 \begin{figure}[hbtp]
 \centering
@@ -85,18 +85,26 @@ Let $VC(k)$ be the VC dimension for $k$ disjoint intervals in a real line. I pro
 \label{fig:vc_dimension1}
 \end{figure}
 
-Given that $VC(k-1)=2(k-1)$, we want to show that two additional examples can be correctly separated by an additional interval. Here, we do not lose generalization even if we assume that two additional examples are greater than the existing $2(k-1)$ examples that are already correctly classified. Then, there are only four cases in terms of the labels of two additional examples, and the two additional examples are correctly classified by the additional interval in all the cases (Figure. \ref{fig:vc_dimension2}). Thus, 
-\[
-VC(k)=VC(k-1)+2=2(k-1)+2=2k
-\]
-Therefore, $VC(k)=2k$ by induction.
-
+Now, given that $VC(k-1)=2(k-1)$, we want to show that two additional examples can be correctly classified by an additional interval. Assume without loss of generality that two additional numbers are greater than the existing $2(k-1)$ ones that are already classified. Then, there are only four cases in terms of the labels of two additional examples, and they are correctly classified by $k$-th interval in all cases (Figure \ref{fig:vc_dimension2}). 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=150mm]{vc_dimension2.jpg}
-\caption{When adding $k$-th interval, two additional examples are correctly classified in all the four cases. Thus, $VC(k)=VC(k-1)+2$.}
+\caption{When adding $k$-th interval, two additional examples are correctly classified in all the four cases.}
 \label{fig:vc_dimension2}
 \end{figure}
+
+Thus, 
+\[
+VC(k) \ge VC(k-1)+2=2(k-1)+2=2k
+\]
+Therefore, $VC(k)$ is at least $2k$ by induction. Also, Figure \ref{fig:vc_dimension3} shows a case in which $k+1$ positive examples and $k$ negative examples cannot be correctly classified. This concludes $VC(k) = 2k$.
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=150mm]{vc_dimension3.jpg}
+\caption{This figure shows a case in which $k+1$ positive examples and $k$ negative examples cannot be correctly classified by $k$ disjoint intervals. The right most positive example (red color) is classified incorrectly. Thus, $VC(k) < 2k+1$.}
+\label{fig:vc_dimension3}
+\end{figure}
+
 
 \item The Gradient Descent (GD) algorithm
 
@@ -107,31 +115,27 @@ The hyper parameters are the initial weight vector which you can randomly initia
 
 \item Write in one sentence: What is the difference between $l1$ and $l2$ regularization.
 
-$l1$ regularization uses $l1$ norm as the regularization term, which encourages the sparsity, while $l2$ regularization uses $l2$ norm.
+$l1$ regularization uses $l1$ norm of $w$ as the regularization term, which encourages the sparsity, while $l2$ regularization uses $l2$ norm of $w$.
 
 \item Write down the gradient descent algorithm applied to hinge loss with $l2$ regularization.
+
+The algorithm is shown in Algorithm 1. Note that the bias term is included in the weight vector by extending the feature vector as $[x, 1]^T$ and the weight vector as $[w, b]^T$.
 
 \begin{algorithm}
 \caption{Gradient descent algorithm applied to hige loss with l2 regularization}\label{euclid}
 \begin{algorithmic}[1]
-\Procedure{GradientDescent()}{}
-\State Initialize $w^{(0)}$ randomly
-\For{$i=0$ to $T$}
+\Procedure{HingeRegularizedGD()}{}
+\State Initialize $w$ randomly
+\For{$i=0$ to $maxIterations$}
 \State $\Delta w=(0, \cdots, 0)$
 \ForAll{training data $x_d$ for $d = 1,\cdots,D$}
-\ForAll{component $w_j$ for $j = 1, \cdots,N$}
-\If{$y_d w^{(i)} \cdot x_d > 1$}
-\State $\Delta w_j+=0$
-\Else
-\State $\Delta w_j+=\eta y_d x_{dj}$
+\If{$y_d w \cdot x_d \le 1$}
+\State $\Delta w= \Delta w+y_d x_d$
 \EndIf
 \EndFor
-\EndFor
-\ForAll{component $w_j$ for $j = 1, \cdots,N$}
-\State $\Delta w_j-=\eta \lambda w_j$
-\EndFor
-\State $w^{(i+1)}=w^{(i)}+\Delta w$
-\State \Return $w^{(i+1)}$ when it has converted
+\State $\Delta w=\Delta w - \lambda w$
+\State $w=w+\eta \Delta w$
+\State \Return $w$ when it has converted
 \EndFor
 \EndProcedure
 \end{algorithmic}

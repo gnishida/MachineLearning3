@@ -1186,3 +1186,295 @@ Binding(CTRL+SHIFT+T,
 
 !ENTRY org.eclipse.ui 4 4 2014-11-05 18:29:59.655
 !MESSAGE Conflicting handlers for org.python.pydev.editor.actions.execLineInConsole: {ActionHandler(org.python.proxies.__main__$ExecuteLine$16@56da22da)} vs {ActionHandler(org.python.proxies.__main__$ExecuteLine$16@56da22da)}
+!SESSION 2014-11-06 10:12:18.032 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-11-06 10:12:30.130
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\gnishida'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.google.eclipse.mechanic 4 0 2014-11-06 10:12:32.634
+!MESSAGE Can't compute Mechanic Configuration directory: file:/C:/Program Files/Brainwy/LiClipse 1.0.0/
+!STACK 0
+java.net.URISyntaxException: Illegal character in path at index 16: file:/C:/Program Files/Brainwy/LiClipse 1.0.0/
+	at java.net.URI$Parser.fail(Unknown Source)
+	at java.net.URI$Parser.checkChars(Unknown Source)
+	at java.net.URI$Parser.parseHierarchical(Unknown Source)
+	at java.net.URI$Parser.parse(Unknown Source)
+	at java.net.URI.<init>(Unknown Source)
+	at com.google.eclipse.mechanic.internal.MechanicConfigurationVariableInitializer.initialize(MechanicConfigurationVariableInitializer.java:25)
+	at org.eclipse.core.internal.variables.ContributedValueVariable.initialize(ContributedValueVariable.java:93)
+	at org.eclipse.core.internal.variables.ContributedValueVariable.getValue(ContributedValueVariable.java:73)
+	at org.eclipse.core.internal.variables.StringSubstitutionEngine.resolve(StringSubstitutionEngine.java:278)
+	at org.eclipse.core.internal.variables.StringSubstitutionEngine.substitute(StringSubstitutionEngine.java:192)
+	at org.eclipse.core.internal.variables.StringSubstitutionEngine.performStringSubstitution(StringSubstitutionEngine.java:87)
+	at org.eclipse.core.internal.variables.StringVariableManager.performStringSubstitution(StringVariableManager.java:592)
+	at org.eclipse.core.internal.variables.StringVariableManager.performStringSubstitution(StringVariableManager.java:358)
+	at com.google.eclipse.mechanic.internal.VariableManagerStringParser.apply(VariableManagerStringParser.java:32)
+	at com.google.eclipse.mechanic.internal.VariableManagerStringParser.apply(VariableManagerStringParser.java:1)
+	at com.google.eclipse.mechanic.internal.ResourceTaskProviderParser.parse(ResourceTaskProviderParser.java:51)
+	at com.google.eclipse.mechanic.plugin.core.OldMechanicPreferences.getTaskProviders(OldMechanicPreferences.java:80)
+	at com.google.eclipse.mechanic.internal.RegisteredTaskProvidersSupplier.get(RegisteredTaskProvidersSupplier.java:41)
+	at com.google.eclipse.mechanic.internal.RegisteredTaskProvidersSupplier.get(RegisteredTaskProvidersSupplier.java:1)
+	at com.google.eclipse.mechanic.DirectoryIteratingTaskScanner.scan(DirectoryIteratingTaskScanner.java:28)
+	at com.google.eclipse.mechanic.internal.RootTaskScanner.scan(RootTaskScanner.java:47)
+	at com.google.eclipse.mechanic.MechanicService.updateTasks(MechanicService.java:273)
+	at com.google.eclipse.mechanic.MechanicService.update(MechanicService.java:237)
+	at com.google.eclipse.mechanic.MechanicService.run(MechanicService.java:172)
+	at com.google.eclipse.mechanic.MechanicService.access$2(MechanicService.java:167)
+	at com.google.eclipse.mechanic.MechanicService$ServiceJob.run(MechanicService.java:374)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.google.eclipse.mechanic 2 0 2014-11-06 10:12:32.637
+!MESSAGE Directory 'C:\Users\gnishida\.eclipse\mechanic' does not exist.
+
+!ENTRY com.google.eclipse.mechanic 2 0 2014-11-06 10:12:32.640
+!MESSAGE Directory '\mechanic' does not exist.
+
+!ENTRY org.python.pydev.shared_core 4 4 2014-11-06 10:38:18.305
+!MESSAGE Unable to get project for the run
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unable to get project for the run
+	at org.python.pydev.debug.ui.launching.PythonRunnerConfig.getProjectFromConfiguration(PythonRunnerConfig.java:334)
+	at org.python.pydev.debug.ui.launching.PythonRunnerConfig.getPythonpathFromConfiguration(PythonRunnerConfig.java:358)
+	at org.python.pydev.debug.ui.blocks.PythonPathBlock.initializeFrom(PythonPathBlock.java:94)
+	at org.python.pydev.debug.ui.MainModuleTab.initializeFrom(MainModuleTab.java:87)
+	at org.eclipse.debug.ui.AbstractLaunchConfigurationTabGroup.initializeFrom(AbstractLaunchConfigurationTabGroup.java:90)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationTabGroupWrapper.initializeFrom(LaunchConfigurationTabGroupWrapper.java:201)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationTabGroupViewer.displayInstanceTabs(LaunchConfigurationTabGroupViewer.java:764)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationTabGroupViewer$8.run(LaunchConfigurationTabGroupViewer.java:635)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationTabGroupViewer.inputChanged(LaunchConfigurationTabGroupViewer.java:652)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationTabGroupViewer.setInput0(LaunchConfigurationTabGroupViewer.java:613)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationTabGroupViewer.setInput(LaunchConfigurationTabGroupViewer.java:588)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationsDialog.handleLaunchConfigurationSelectionChanged(LaunchConfigurationsDialog.java:960)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationsDialog$3.selectionChanged(LaunchConfigurationsDialog.java:573)
+	at org.eclipse.jface.viewers.StructuredViewer$3.run(StructuredViewer.java:876)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:178)
+	at org.eclipse.jface.viewers.StructuredViewer.firePostSelectionChanged(StructuredViewer.java:873)
+	at org.eclipse.jface.viewers.StructuredViewer.setSelection(StructuredViewer.java:1708)
+	at org.eclipse.jface.viewers.TreeViewer.setSelection(TreeViewer.java:1093)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationView.handleConfigurationAdded(LaunchConfigurationView.java:296)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationView.access$1(LaunchConfigurationView.java:285)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationView$2.run(LaunchConfigurationView.java:274)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:136)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4147)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3764)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:832)
+	at org.eclipse.jface.window.Window.open(Window.java:808)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationsDialog.open(LaunchConfigurationsDialog.java:1154)
+	at org.eclipse.debug.ui.DebugUITools$2.run(DebugUITools.java:611)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.debug.ui.DebugUITools.openLaunchConfigurationDialogOnGroup(DebugUITools.java:619)
+	at org.eclipse.debug.ui.DebugUITools.openLaunchConfigurationDialogOnGroup(DebugUITools.java:552)
+	at org.eclipse.debug.ui.actions.AbstractLaunchToolbarAction.run(AbstractLaunchToolbarAction.java:87)
+	at org.eclipse.debug.ui.actions.AbstractLaunchHistoryAction.runWithEvent(AbstractLaunchHistoryAction.java:420)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:243)
+	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:237)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:595)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:511)
+	at org.eclipse.jface.action.ActionContributionItem$6.handleEvent(ActionContributionItem.java:462)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4353)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1061)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4172)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3761)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1032)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:148)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:636)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:579)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at com.brainwy.liclipse.rcp.IDEApplication.start(IDEApplication.java:195)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:382)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:236)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+!SUBENTRY 1 org.python.pydev.debug 4 4 2014-11-06 10:38:18.305
+!MESSAGE Unable to get project for the run
+
+!ENTRY org.python.pydev.shared_core 4 4 2014-11-06 10:39:36.107
+!MESSAGE Unable to read contents from: D:\GitHub\MachineLearning3\python\.metadata\.plugins\org.python.pydev\v1_5b9qiilcwpnpguoht6o4mwac1\shell\__b_1turailx4u4yvqugva902002o.top
+!STACK 0
+java.io.EOFException: Unexpected end of ZLIB input stream
+	at java.util.zip.InflaterInputStream.fill(Unknown Source)
+	at java.util.zip.InflaterInputStream.read(Unknown Source)
+	at java.util.zip.GZIPInputStream.read(Unknown Source)
+	at java.io.BufferedInputStream.fill(Unknown Source)
+	at java.io.BufferedInputStream.read1(Unknown Source)
+	at java.io.BufferedInputStream.read(Unknown Source)
+	at java.io.ObjectInputStream$PeekInputStream.read(Unknown Source)
+	at java.io.ObjectInputStream$PeekInputStream.readFully(Unknown Source)
+	at java.io.ObjectInputStream$BlockDataInputStream.readShort(Unknown Source)
+	at java.io.ObjectInputStream.readStreamHeader(Unknown Source)
+	at java.io.ObjectInputStream.<init>(Unknown Source)
+	at org.python.pydev.editor.codecompletion.revisited.modules.CompiledModule.getCached(CompiledModule.java:296)
+	at org.python.pydev.editor.codecompletion.revisited.modules.CompiledModule.<init>(CompiledModule.java:148)
+	at org.python.pydev.editor.codecompletion.revisited.SystemModulesManager.getBuiltinModule(SystemModulesManager.java:325)
+	at org.python.pydev.editor.codecompletion.revisited.SystemModulesManager.getBuiltinModule(SystemModulesManager.java:1)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getModuleAndRelatedModulesManager(ProjectModulesManager.java:194)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getModule(ProjectModulesManager.java:174)
+	at org.python.pydev.editor.codecompletion.revisited.AbstractASTManager.getModule(AbstractASTManager.java:434)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findGlobalTokDef(SourceModule.java:1033)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinitionsFromModAndTok(SourceModule.java:923)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinition(SourceModule.java:905)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinition(SourceModule.java:786)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinition(SourceModule.java:664)
+	at org.python.pydev.editor.codecompletion.revisited.modules.AbstractModule.findDefinition(AbstractModule.java:1)
+	at org.python.pydev.editor.refactoring.PyRefactoringFindDefinition.findActualDefinition(PyRefactoringFindDefinition.java:177)
+	at org.python.pydev.editor.refactoring.PyRefactoringFindDefinition.findActualDefinition(PyRefactoringFindDefinition.java:79)
+	at com.python.pydev.refactoring.refactorer.RefactorerFindDefinition.findDefinition(RefactorerFindDefinition.java:61)
+	at com.python.pydev.refactoring.refactorer.Refactorer.findDefinition(Refactorer.java:114)
+	at com.python.pydev.refactoring.wizards.rename.PyRenameEntryPoint.checkInitialConditions(PyRenameEntryPoint.java:232)
+	at com.python.pydev.refactoring.markoccurrences.MarkOccurrencesJob.createRequest(MarkOccurrencesJob.java:102)
+	at org.python.pydev.shared_ui.mark_occurrences.BaseMarkOccurrencesJob.run(BaseMarkOccurrencesJob.java:168)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.python.pydev.shared_core 4 4 2014-11-06 10:40:12.143
+!MESSAGE ERROR reading shell.
+ProcessInfo:
+
+ - Executed: C:\Anaconda\python.exe -u C:\Program Files\Brainwy\LiClipse 1.0.0\plugins\org.python.pydev_3.6.0.201406221719\pysrc\pycompletionserver.py 61085
+
+ - Environment:
+ALLUSERSPROFILE=C:\ProgramData
+APPDATA=C:\Users\gnishida\AppData\Roaming
+BOOST2_ROOT=C:\Program Files (x86)\boost\boost_1_47
+BOOST3_ROOT=C:\Program Files (x86)\boost\boost_1_44
+BOOST_ROOT=C:\boost_1_53\
+CG_BIN_PATH=C:\Program Files (x86)\NVIDIA Corporation\Cg\bin
+CG_INC_PATH=C:\Program Files (x86)\NVIDIA Corporation\Cg\include
+CG_LIB_PATH=C:\Program Files (x86)\NVIDIA Corporation\Cg\lib
+CLASSPATH=.;C:\Program Files (x86)\Java\jre6\lib\ext\QTJava.zip;C:\Program Files (x86)\OpenNI\Bin\org.OpenNI.jar;D:\PCL 1.6.0\OpenNI\Bin64\org.OpenNI.jar
+COMMONPROGRAMFILES(X86)=C:\Program Files (x86)\Common Files
+COMMONPROGRAMFILES=C:\Program Files\Common Files
+COMMONPROGRAMW6432=C:\Program Files\Common Files
+COMPUTERNAME=LUCY
+COMSPEC=C:\Windows\system32\cmd.exe
+CUDA_BIN_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin
+CUDA_INC_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\include
+CUDA_LIB_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\lib\x64
+CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\
+CUDA_PATH_V4_0=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.0\
+CUDA_PATH_V4_1=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.1\
+CUDA_PATH_V4_2=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.2\
+CUDA_PATH_V5_0=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\
+CV_ROOT=D:\GitHub\QtUrban\opencv
+FBX_SDK_PATH=C:\Program Files\Autodesk\FBX\FbxSdk\2012.1
+FP_NO_HOST_CHECK=NO
+FWTOOLS_ROOT=C:\Program Files (x86)\FWTools2.4.7
+G3D9DATA=D:\CS334\G3D9\data
+GDAL_DATA=C:\Program Files (x86)\MapWindow\gdal_data
+GLEW_HOME=D:\GitHub\QtUrban\glew\
+GS_PROG=C:\Program Files (x86)\gs\gs8.64\bin
+HOMEDRIVE=C:
+HOMEPATH=\Users\gnishida
+IMAGE_MAGICK=C:\Program Files (x86)\ImageMagick-6.7.9-Q16
+LOCALAPPDATA=C:\Users\gnishida\AppData\Local
+LOGONSERVER=\\TARDIS
+NUMBER_OF_PROCESSORS=8
+NVCUDASAMPLES5_0_ROOT=C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\
+NVCUDASAMPLES_ROOT=C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\
+NVSDKCOMPUTE_ROOT=C:\ProgramData\NVIDIA Corporation\NVIDIA GPU Computing SDK 4.2
+NVTOOLSEXT_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\nvToolsExt\
+OPEN_NI_BIN64=D:\PCL 1.6.0\OpenNI\Bin64
+OPEN_NI_BIN=C:\Program Files (x86)\OpenNI\Bin
+OPEN_NI_INCLUDE=D:\PCL 1.6.0\OpenNI\Include
+OPEN_NI_INSTALL_PATH64=D:\PCL 1.6.0\OpenNI\
+OPEN_NI_INSTALL_PATH=C:\Program Files (x86)\OpenNI\
+OPEN_NI_LIB64=D:\PCL 1.6.0\OpenNI\Lib64
+OPEN_NI_LIB=C:\Program Files (x86)\OpenNI\Lib
+OS=Windows_NT
+PATH=C:/Program Files/Brainwy/LiClipse 1.0.0/jre/bin/server;C:/Program Files/Brainwy/LiClipse 1.0.0/jre/bin;C:/Program Files/Brainwy/LiClipse 1.0.0/jre/lib/amd64;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\libnvvp\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\ImageMagick-6.7.9-Q16;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.2\\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.2\libnvvp\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Gstools\Gsscript\8.61\gs8.61\bin;C:\Program Files\Gstools\GSView\4.8\gsview;C:\Program Files\VanDyke Software\Clients\;C:\Program Files (x86)\Microsoft SQL Server\90\Tools\binn\;C:\Qt\4.7.0\bin;C:\Program Files\System Center Operations Manager 2007\;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\MATLAB\R2012a\runtime\win64;C:\Program Files\MATLAB\R2012a\bin;C:\Program Files\MATLAB\R2010a\runtime\win64;C:\Program Files\MATLAB\R2010a\bin;C:\Program Files (x86)\OpenNI\Bin;C:\Qt\4.8.1\bin;C:\ProgramData\NVIDIA Corporation\NVIDIA GPU Computing SDK 4.2\C\common\bin;C:\Program Files (x86)\Git\cmd;D:\PCL 1.6.0\OpenNI\Bin64;D:\PCL 1.6.0\bin;C:\Program Files (x86)\FastSum;D:\CS334\G3D9\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\;C:\Anaconda;C:\Anaconda\Scripts;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\libnvvp\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\ImageMagick-6.7.9-Q16;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.2\\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.2\libnvvp\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Gstools\Gsscript\8.61\gs8.61\bin;C:\Program Files\Gstools\GSView\4.8\gsview;C:\Program Files\VanDyke Software\Clients\;C:\Program Files (x86)\Microsoft SQL Server\90\Tools\binn\;C:\Qt\4.7.0\bin;C:\Program Files\System Center Operations Manager 2007\;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\MATLAB\R2012a\runtime\win64;C:\Program Files\MATLAB\R2012a\bin;C:\Program Files\MATLAB\R2010a\runtime\win64;C:\Program Files\MATLAB\R2010a\bin;C:\Program Files (x86)\OpenNI\Bin;C:\Qt\4.8.1\bin;C:\ProgramData\NVIDIA Corporation\NVIDIA GPU Computing SDK 4.2\C\common\bin;C:\Program Files (x86)\Git\cmd;D:\PCL 1.6.0\OpenNI\Bin64;D:\PCL 1.6.0\bin;C:\Program Files (x86)\FastSum;D:\CS334\G3D9\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\;C:\Qt\4.8.1\bin;D:\GitHub\QtUrban\opencv;C:\Qt\4.8.1\lib;C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin;D:\GitHub\QtUrban\glew\\bin;D:\GitHub\QtUrban\opencv;C:\Program Files (x86)\ImageMagick-6.7.9-Q16;C:\Python34\;C:\Program Files\Brainwy\LiClipse 1.0.0;
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+PCL_ROOT=D:\PCL 1.6.0
+POSTGRESQL_ROOT=C:\Program Files (x86)\PostgreSQL\9.0
+PROCESSOR_ARCHITECTURE=AMD64
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 26 Stepping 5, GenuineIntel
+PROCESSOR_LEVEL=6
+PROCESSOR_REVISION=1a05
+PROGRAMDATA=C:\ProgramData
+PROGRAMFILES(X86)=C:\Program Files (x86)
+PROGRAMFILES=C:\Program Files
+PROGRAMW6432=C:\Program Files
+PROJ_LIB=C:\Program Files (x86)\MapWindow\PROJ_NAD
+PROMPT=$P$G
+PSMODULEPATH=C:\Windows\system32\WindowsPowerShell\v1.0\Modules\
+PUBLIC=C:\Users\Public
+PYTHONPATH=C:\Program Files\Brainwy\LiClipse 1.0.0\plugins\org.python.pydev_3.6.0.201406221719\pysrc\pydev_sitecustomize;C:\Anaconda\lib\site-packages\gensim-0.10.2-py2.7-win-amd64.egg;C:\Anaconda\lib\site-packages\setuptools-1.3.2-py2.7.egg;C:\Anaconda\DLLs;C:\Anaconda\lib;C:\Anaconda\lib\lib-tk;C:\Anaconda;C:\Anaconda\lib\site-packages;C:\Anaconda\lib\site-packages\PIL;C:\Anaconda\lib\site-packages\win32;C:\Anaconda\lib\site-packages\win32\lib;C:\Anaconda\lib\site-packages\Pythonwin;C:\Anaconda\lib\site-packages\runipy-0.1.0-py2.7.egg
+PYTHON_ROOT=C:\Python26
+QMAKESPEC=win32-msvc2010
+QTDIR64=C:\Qt\4.8.1
+QTDIR=C:\Qt\4.8.1
+QTJAVA=C:\Program Files (x86)\Java\jre6\lib\ext\QTJava.zip
+QWT_ROOT=C:\Qt\Qwt
+SESSIONNAME=Console
+SYSTEMDRIVE=C:
+SYSTEMROOT=C:\Windows
+TEMP=C:\Users\gnishida\AppData\Local\Temp
+TMP=C:\Users\gnishida\AppData\Local\Temp
+UGII_3DCONNEXION_LIBRARY=%UGII_BASE_DIR%\ugalliance\vendor\startup\3DxNX.dll
+USERDNSDOMAIN=AD.CS.PURDUE.EDU
+USERDOMAIN=SERVERS
+USERNAME=gnishida
+USERPROFILE=C:\Users\gnishida
+VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\
+VS100COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\
+VS110COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\
+VS120COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\
+VS90COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\Tools\
+WINDIR=C:\Windows
+WINDOWSSDKDIR=C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\
+
+ - Working Dir:
+C:\Program Files\Brainwy\LiClipse 1.0.0\plugins\org.python.pydev_3.6.0.201406221719\pysrc
+
+ - OS:
+Windows 7
+
+ - Std output:
+
+
+ - Err output:
+
+!STACK 0
+java.nio.channels.ClosedByInterruptException
+	at java.nio.channels.spi.AbstractInterruptibleChannel.end(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.read(Unknown Source)
+	at sun.nio.ch.SocketAdaptor$SocketInputStream.read(Unknown Source)
+	at sun.nio.ch.ChannelInputStream.read(Unknown Source)
+	at java.io.InputStream.read(Unknown Source)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.read(AbstractShell.java:454)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.read(AbstractShell.java:506)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.writeAndGetResults(AbstractShell.java:692)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.getLineCol(AbstractShell.java:776)
+	at org.python.pydev.editor.codecompletion.revisited.modules.CompiledModule.findDefinition(CompiledModule.java:596)
+	at org.python.pydev.editor.codecompletion.revisited.modules.AbstractModule.findDefinition(AbstractModule.java:1)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinition(SourceModule.java:887)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinition(SourceModule.java:664)
+	at org.python.pydev.editor.codecompletion.revisited.modules.AbstractModule.findDefinition(AbstractModule.java:1)
+	at org.python.pydev.editor.refactoring.PyRefactoringFindDefinition.findActualDefinition(PyRefactoringFindDefinition.java:177)
+	at org.python.pydev.editor.refactoring.PyRefactoringFindDefinition.findActualDefinition(PyRefactoringFindDefinition.java:79)
+	at org.python.pydev.editor.hover.PyTextHover.getDocstringHover(PyTextHover.java:206)
+	at org.python.pydev.editor.hover.PyTextHover.getHoverInfo(PyTextHover.java:150)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)

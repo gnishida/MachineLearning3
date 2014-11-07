@@ -3,6 +3,9 @@ import pylab as plt
 import math
 import sys
 
+# turn on this flag when you debug the code
+debug = False
+
 featureComputed = False
 trainFeatures = []
 valFeatures = []
@@ -75,8 +78,7 @@ def report(examples, features, w, vars, attr_types):
 		if examples[i].label == "+": y = 1
 		else: y = -1
 
-		h = _sgn(np.dot(w, features[i]))
-		if h == y:
+		if y * np.dot(w, features[i]) >= 1:
 			correct += 1
 			if y == 1:
 				true_pos += 1
@@ -161,24 +163,22 @@ def buildFeatureSet(attr_index, attr_type, attr_values):
 # @param lambda			the impact of the regularizer
 # @param featureSet		1 - original attributes / 2 - feature pairs / 3 - use all the features in 1-2 as required in the instruction.
 # @return performance results in the order of "training data", "validation data", and "test data". For each data, "accuracy", "precision", "recall", and "F1-score" are stored in the list.
-def GD(maxIterations, regularization, stepSize, lambda, featureSet):
+def GD(maxIterations, regularization, stepSize, lmbd, featureSet):
+	global debug
 	global featureComputed
 	global trainFeatures
 	global valFeatures
 	global testFeatures
 
-	attr_types = ["B", "C", "C", "B", "B", "B", "B", "C", "B", "B", "C", "B", "B", "C", "C"]
+	#attr_types = ["B", "B", "B", "B"]
+	#examples = readData("smalltrain.txt")
 
+	attr_types = ["B", "C", "C", "B", "B", "B", "B", "C", "B", "B", "C", "B", "B", "C", "C"]
 	examples = readData("train.txt")
 
 	# get all the possible values for each attribute
-	# MODIFIED: for the continuous attributes, we use thresholds.
 	attr_values = {}
 	for attr_index in xrange(len(attr_types)):
-		#if attr_type == "C": continue
-
-		#print(attr_index)
-
 		attr_values[attr_index] = []
 
 		if attr_types[attr_index] == "B":
@@ -190,79 +190,78 @@ def GD(maxIterations, regularization, stepSize, lambda, featureSet):
 			attr_values[attr_index] = findThresholds(examples, attr_index)
 
 
-		#for val in attr_values[attr_index]:
-		#	print("  " + str(val))
+		if debug:
+			for val in attr_values[attr_index]:
+				print("  " + str(val))
 
 	# setup feature representation
 	vars = []
 	if featureSet == 1 or featureSet == 3:
 		for attr_index in xrange(len(attr_types)):
-			#if attr_type == "C": continue
-
 			vars += buildFeatureSet(attr_index, attr_types[attr_index], attr_values[attr_index])
 
 
 	if featureSet == 2 or featureSet == 3:
 		#attr_indices = attr_types.keys()
 		for i in xrange(len(attr_types)):
-			#attr_type1 = attr_types[attr_indices[i]]
-			#if attr_type1 == "C": continue
 			set1 = buildFeatureSet(i, attr_types[i], attr_values[i])
 
 			for j in xrange(i+1, len(attr_types)):
-				#attr_type2 = attr_types[attr_indices[j]]
-				#if attr_type2 == "C": continue
 				set2 = buildFeatureSet(j, attr_types[j], attr_values[j])
 
 				for k in xrange(len(set1)):
 					for l in xrange(len(set2)):
 						vars.append(set1[k] + set2[l])
 
-	#print("============= variables =======")
-	#for list in vars:
-	#	for combination in list:
-	#		print(str(combination[0]) + ":" + combination[1]),
-	#	print
+	if debug:
+		print("============= variables =======")
+		for list in vars:
+			for combination in list:
+				print(str(combination[0]) + ":" + combination[1]),
+			print
 
 	# initialize the weight vector
+	#w = np.random.rand(len(vars) + 1)
 	w = np.zeros(len(vars) + 1)
-	#print("w: " + str(w))
-
-	# learning rate
-	r = 0.01
+	if debug:
+		print("initial w: " + str(w))
 
 	# compute the feature vectors for all the examples
 	if not featureComputed:
 		trainFeatures = _x(attr_types, vars, examples)
 
-	correct = 0
-	incorrect = 0
+		if debug:
+			for trainFeature in trainFeatures:
+				print(trainFeature)
+
 	for iter in xrange(maxIterations):
+		dw = np.zeros(len(vars) + 1)
 		for i in xrange(len(examples)):
-			sys.stdout.write(".")
-
 			# get the true label
+			y = -1
 			if examples[i].label == "+": y = 1
-			else: y = -1
 
-			# predict the label
-			h = _sgn(np.dot(w, trainFeatures[i]))
-			#print("x: " + str(x) + " h: " + str(h) + " y: " + str(y))
-			if h == y:
-				#print("OK")
-				correct += 1
-				continue
-			else:
-				#print("NG")
-				incorrect += 1
-				# update the weight vector
-				w += r * y * trainFeatures[i];
-				#print("w: " + str(w))
-	print
+			# compute the delta w by hinge loss
+			if y * np.dot(w, trainFeatures[i]) <= 1:
+				dw += y * trainFeatures[i]
 
-	#print("============== final weight ============")
-	#print(w)
-	#print("correct: " + str(correct) + " / incorrect: " + str(incorrect))
+		# regularization term
+		if regularization == "l1":
+			#dw -= lmbd;
+			for i in xrange(len(dw)):
+				if w[i] >= 0:
+					dw[i] -= lmbd
+				else:
+					dw[i] += lmbd
+		else:
+			# l2 norm
+			dw -= lmbd * w;
+
+		# update the weight vector
+		w += stepSize * dw
+
+		if debug:
+			print("w: " + str(w))
 
 	ret = []
 	#print("============== test on the training data ========")
@@ -292,6 +291,7 @@ def readData(filename):
 	f = open(filename).read()
 	examples = []
 	for line in f.split('\r'):
+	#for line in f.split('\n'):
 		if line == "": continue
 		row = line.split('\t')
 
@@ -306,7 +306,7 @@ def readData(filename):
 
 ###############################################################################
 # Draw learning curves of Perceptron
-def drawLearningCurve(startMaxIterations, endMaxIterations, featureSet, saveFile):
+def drawLearningCurve(maxIterationsRange, featureSet, saveFile):
 	nExamples = []
 	list_t = []
 	list_v = []
@@ -318,9 +318,9 @@ def drawLearningCurve(startMaxIterations, endMaxIterations, featureSet, saveFile
 	# use the accuracy to draw the learning curve
 	perfType = 0
 
-	for maxIterations in xrange(startMaxIterations, endMaxIterations):
+	for maxIterations in maxIterationsRange:
 		print(maxIterations)
-		(results, w) = Perceptron(maxIterations, featureSet)
+		(results, w) = GD(maxIterations, "l1", 0.01, 0.01, featureSet)
 		#print("final w: " + str(w))
 		nExamples.append(maxIterations)
 		list_t.append(results[0][perfType])
@@ -358,12 +358,11 @@ def drawLearningCurve(startMaxIterations, endMaxIterations, featureSet, saveFile
 	plt.plot(nExamples, list_v, "-", label="validation")
 	plt.plot(nExamples, list_ts, "-", label="test")
 	plt.title("Learning Curve")
-	plt.xlim(0, endMaxIterations)
+	plt.xlim(0, maxIterationsRange[-1])
 	plt.ylim(0, 1.0)
 	plt.legend(loc='lower left')
 
-	if (saveFile):
-		plt.savefig("result.eps")
+	plt.savefig(saveFile)
 
 	plt.show()
 
@@ -374,12 +373,12 @@ if __name__ == '__main__':
 	# this flag is to avoid the redundant computation when extracting feature vectors
 	featureComputed = False
 
-	#Perceptron(1, 1)
-	#(results, w) = Perceptron(1, 2)
+	#GD(2000, "l1", 0.1, 0.01, 1)
+	#(results, w) = GD(2000, "l2", 0.1, 0.01, 1)
 	#print(results)
 
 	# draw learning curves for each featureSet type
-	drawLearningCurve(1, 11, 1, True)
-	#drawLearningCurve(1, 11, 2, True)
-	#drawLearningCurve(1, 11, 3, True)
+	#drawLearningCurve(range(1, 100, 1), 1, "result1.eps")
+	drawLearningCurve(range(1, 100, 1), 2, "result2.eps")
+	#drawLearningCurve(range(1, 100, 1), 3, "result3.eps")
 
