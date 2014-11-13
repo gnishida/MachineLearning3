@@ -80,7 +80,7 @@ Let $VC(k)$ be the VC dimension for $k$ disjoint intervals in a real line. I pro
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=150mm]{vc_dimension1.jpg}
+\includegraphics[width=150mm]{vc_dimension1}
 \caption{For the case of $k=1$, two examples are correctly classified in all the four cases. Thus, $VC(1)=2$.}
 \label{fig:vc_dimension1}
 \end{figure}
@@ -88,7 +88,7 @@ Let $VC(k)$ be the VC dimension for $k$ disjoint intervals in a real line. I pro
 Now, given that $VC(k-1)=2(k-1)$, we want to show that two additional examples can be correctly classified by an additional interval. Assume without loss of generality that two additional numbers are greater than the existing $2(k-1)$ ones that are already classified. Then, there are only four cases in terms of the labels of two additional examples, and they are correctly classified by $k$-th interval in all cases (Figure \ref{fig:vc_dimension2}). 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=150mm]{vc_dimension2.jpg}
+\includegraphics[width=150mm]{vc_dimension2}
 \caption{When adding $k$-th interval, two additional examples are correctly classified in all the four cases.}
 \label{fig:vc_dimension2}
 \end{figure}
@@ -100,7 +100,7 @@ VC(k) \ge VC(k-1)+2=2(k-1)+2=2k
 Therefore, $VC(k)$ is at least $2k$ by induction. Also, Figure \ref{fig:vc_dimension3} shows a case in which $k+1$ positive examples and $k$ negative examples cannot be correctly classified. This concludes $VC(k) = 2k$.
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=150mm]{vc_dimension3.jpg}
+\includegraphics[width=140mm]{vc_dimension3}
 \caption{This figure shows a case in which $k+1$ positive examples and $k$ negative examples cannot be correctly classified by $k$ disjoint intervals. The right most positive example (red color) is classified incorrectly. Thus, $VC(k) < 2k+1$.}
 \label{fig:vc_dimension3}
 \end{figure}
@@ -119,7 +119,18 @@ $l1$ regularization uses $l1$ norm of $w$ as the regularization term, which enco
 
 \item Write down the gradient descent algorithm applied to hinge loss with $l2$ regularization.
 
-The algorithm is shown in Algorithm 1. Note that the bias term is included in the weight vector by extending the feature vector as $[x, 1]^T$ and the weight vector as $[w, b]^T$.
+The objective function is
+\[
+F(w)=\frac{\lambda}{2}\|w\|^2+\sum_i \max{(0, 1-y_iw^Tx_i)}
+\]
+Then, its derivative is
+\[
+\frac{\partial F(w)}{w}=\lambda w+
+\begin{cases}
+1-y_i x_i & ({\rm if} \; y_iw^Tx_i \le 1) \\
+0 & {\rm Otherwise}
+\end{cases}
+\]
 
 \begin{algorithm}
 \caption{Gradient descent algorithm applied to hige loss with l2 regularization}\label{euclid}
@@ -141,14 +152,70 @@ The algorithm is shown in Algorithm 1. Note that the bias term is included in th
 \end{algorithmic}
 \end{algorithm}
 
+The algorithm is shown in Algorithm 1. Note that the bias term is included in the weight vector by extending the feature vector as $[x, 1]^T$ and the weight vector as $[w, b]^T$.
+
+
 
 \end{enumerate}
-
-
 
 \end{enumerate}
 
 \section{Programming Assignment}
+
+For the programming assignment, I used SVM with the hinge loss function and $l1$ or $l2$ regularization as required. The pseudo code of gradient descent algorithm to solve this is shown in Algorithm 2, which is basically similar to Algorithm 1 except that both $l1$ and $l2$ are supported.
+
+\begin{algorithm}
+\caption{Gradient descent algorithm applied to hige loss with l1 and l2 regularization}\label{euclid}
+\begin{algorithmic}[1]
+\Procedure{GD(maxIterations, regularization, $\eta$, $\lambda$)}{}
+\State Initialize $w$ randomly
+\For{$iter=0$ to $maxIterations$}
+\State $\Delta w=(0, \cdots, 0)$
+\ForAll{training data $x_d$ for $d = 1,\cdots,D$}
+\If{$y_d w \cdot x_d \le 1$}
+\State $\Delta w= \Delta w+y_d x_d$
+\EndIf
+\EndFor
+\If{regularization == $l1$}
+\For{$i=0$ to $N$}
+\If{$w_i \ge 0$}
+\State $\Delta w_i=\Delta w_i-\lambda$
+\Else
+\State $\Delta w_i=\Delta w_i+\lambda$
+\EndIf
+\EndFor
+\ElsIf{regularization == $l2$}
+\State $\Delta w=\Delta w - \lambda w$
+\EndIf
+\State $w=w+\eta \Delta w$
+\State \Return $w$ when it has converged
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\subsection*{Feature Set}
+For the continuous values, I used all the thresholds as attributes. For instance, if an original attribute $a$ has three thresholds ${1, 2, 3}$, then the corresponding attributes will be $\{(a<1),(a\ge 1; a<2),(a\ge 2; a<3),(a\ge 3)\}$. Also, I ignored the examples that contain missing values.
+
+\subsection*{Hyper Parameters}
+There are so many hyper parameters, $maxIterations$, $l1$ or $l2$, $stepSize$, $lambda$, and feature set, but some hyper parameters are dependent to each other. For instance, having small $stepSize$ and $lambda$ can increase the number of iterations to converge, while large $stepSize$ and $lambda$ may cause oscillation. Thus, I chosed small values for $stepSize$ and $labmda$, that is, $stepSize=0.01$ and $lambda=0.01$. 
+
+\subsection*{Results}
+Then, I experimented with all the combinations of $regularization=l1,l2$ and $featureSet=1,2,3$ as increasing $maxIterations$ from 1 to 200. The learning curve is shown in Figures 4-8.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=140mm]{learning_curve_l1_1}
+\caption{This figure shows the learning curve with $l1$ regularization and $featureSet=1$.}
+\label{fig:learning_curve_l1_1}
+\end{figure}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=140mm]{learning_curve_l2_1}
+\caption{This figure shows the learning curve with $l2$ regularization and $featureSet=1$.}
+\label{fig:learning_curve_l2_1}
+\end{figure}
 
 \end{document}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.10)  6 NOV 2014 15:28
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.10)  13 NOV 2014 16:22
 entering extended mode
 **D:/GitHub/MachineLearning3/tex-v1/hw-template.tex
 (D:/GitHub/MachineLearning3/tex-v1/hw-template.tex
@@ -248,7 +248,11 @@ G,.JBIG2,.JB2,.eps]
 \c@observation=\count116
 \c@example=\count117
 )
-(D:\GitHub\MachineLearning3\tex-v1\hw-template.aux)
+(D:\GitHub\MachineLearning3\tex-v1\hw-template.aux
+
+LaTeX Warning: Label `euclid' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
@@ -261,8 +265,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
-
-(C:\Users\gnishida\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+ (C:\Users\gnishida\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count118
 \scratchdimen=\dimen116
@@ -291,50 +294,129 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/gnishida/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<vc_dimension1.jpg, id=13, 937.25156pt x 137.7647pt>
-File: vc_dimension1.jpg Graphic file (type jpg)
- <use vc_dimension1.jpg>
-Package pdftex.def Info: vc_dimension1.jpg used on input line 83.
-(pdftex.def)             Requested size: 426.79134pt x 62.73347pt.
+Package epstopdf Info: Source file: <vc_dimension1.eps>
+(epstopdf)                    date: 2014-11-12 15:54:38
+(epstopdf)                    size: 541718 bytes
+(epstopdf)             Output file: <vc_dimension1-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-11-12 15:55:14
+(epstopdf)                    size: 28146 bytes
+(epstopdf)             Command: <epstopdf --outfile=vc_dimension1-eps-converted
+-to.pdf vc_dimension1.eps>
+(epstopdf)             \includegraphics on input line 83.
+Package epstopdf Info: Output file is already uptodate.
 
-<vc_dimension2.jpg, id=14, 937.25156pt x 122.70844pt>
-File: vc_dimension2.jpg Graphic file (type jpg)
- <use vc_dimension2.jpg>
-Package pdftex.def Info: vc_dimension2.jpg used on input line 91.
-(pdftex.def)             Requested size: 426.79134pt x 55.87735pt.
+<vc_dimension1-eps-converted-to.pdf, id=13, 568.1225pt x 82.3075pt>
+File: vc_dimension1-eps-converted-to.pdf Graphic file (type pdf)
 
-<vc_dimension3.jpg, id=15, 726.46407pt x 112.16907pt>
-File: vc_dimension3.jpg Graphic file (type jpg)
- <use vc_dimension3.jpg>
-Package pdftex.def Info: vc_dimension3.jpg used on input line 103.
-(pdftex.def)             Requested size: 426.79134pt x 65.90018pt.
+<use vc_dimension1-eps-converted-to.pdf>
+Package pdftex.def Info: vc_dimension1-eps-converted-to.pdf used on input line 
+83.
+(pdftex.def)             Requested size: 426.79134pt x 61.8347pt.
+Package epstopdf Info: Source file: <vc_dimension2.eps>
+(epstopdf)                    date: 2014-11-12 15:57:14
+(epstopdf)                    size: 541715 bytes
+(epstopdf)             Output file: <vc_dimension2-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-11-12 15:57:34
+(epstopdf)                    size: 28199 bytes
+(epstopdf)             Command: <epstopdf --outfile=vc_dimension2-eps-converted
+-to.pdf vc_dimension2.eps>
+(epstopdf)             \includegraphics on input line 91.
+Package epstopdf Info: Output file is already uptodate.
 
-[2 <D:/GitHub/MachineLearning3/tex-v1/vc_dimension1.jpg> <D:/GitHub/MachineLear
-ning3/tex-v1/vc_dimension2.jpg>] [3 <D:/GitHub/MachineLearning3/tex-v1/vc_dimen
-sion3.jpg>] (D:\GitHub\MachineLearning3\tex-v1\hw-template.aux) ) 
+<vc_dimension2-eps-converted-to.pdf, id=14, 562.1pt x 74.2775pt>
+File: vc_dimension2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use vc_dimension2-eps-converted-to.pdf>
+Package pdftex.def Info: vc_dimension2-eps-converted-to.pdf used on input line 
+91.
+(pdftex.def)             Requested size: 426.79134pt x 56.39708pt.
+Package epstopdf Info: Source file: <vc_dimension3.eps>
+(epstopdf)                    date: 2014-11-12 15:54:38
+(epstopdf)                    size: 541718 bytes
+(epstopdf)             Output file: <vc_dimension3-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-11-12 16:01:11
+(epstopdf)                    size: 28146 bytes
+(epstopdf)             Command: <epstopdf --outfile=vc_dimension3-eps-converted
+-to.pdf vc_dimension3.eps>
+(epstopdf)             \includegraphics on input line 103.
+Package epstopdf Info: Output file is already uptodate.
+
+<vc_dimension3-eps-converted-to.pdf, id=15, 568.1225pt x 82.3075pt>
+File: vc_dimension3-eps-converted-to.pdf Graphic file (type pdf)
+
+<use vc_dimension3-eps-converted-to.pdf>
+Package pdftex.def Info: vc_dimension3-eps-converted-to.pdf used on input line 
+103.
+(pdftex.def)             Requested size: 398.33858pt x 57.71155pt.
+ [2 <D:/GitHub/MachineLearning3/tex-v1/vc_dimension1-eps-converted-to.pdf> <D:/
+GitHub/MachineLearning3/tex-v1/vc_dimension2-eps-converted-to.pdf>] [3 <D:/GitH
+ub/MachineLearning3/tex-v1/vc_dimension3-eps-converted-to.pdf>] [4]
+Package epstopdf Info: Source file: <learning_curve_l1_1.eps>
+(epstopdf)                    date: 2014-11-06 15:43:06
+(epstopdf)                    size: 24300 bytes
+(epstopdf)             Output file: <learning_curve_l1_1-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-11-13 16:22:56
+(epstopdf)                    size: 14778 bytes
+(epstopdf)             Command: <epstopdf --outfile=learning_curve_l1_1-eps-con
+verted-to.pdf learning_curve_l1_1.eps>
+(epstopdf)             \includegraphics on input line 208.
+Package epstopdf Info: Output file is already uptodate.
+
+<learning_curve_l1_1-eps-converted-to.pdf, id=70, 578.16pt x 433.62pt>
+File: learning_curve_l1_1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use learning_curve_l1_1-eps-converted-to.pdf>
+Package pdftex.def Info: learning_curve_l1_1-eps-converted-to.pdf used on input
+ line 208.
+(pdftex.def)             Requested size: 398.33858pt x 298.75482pt.
+Package epstopdf Info: Source file: <learning_curve_l2_1.eps>
+(epstopdf)                    date: 2014-11-06 17:01:39
+(epstopdf)                    size: 24207 bytes
+(epstopdf)             Output file: <learning_curve_l2_1-eps-converted-to.pdf>
+(epstopdf)                    date: 2014-11-13 16:22:56
+(epstopdf)                    size: 13839 bytes
+(epstopdf)             Command: <epstopdf --outfile=learning_curve_l2_1-eps-con
+verted-to.pdf learning_curve_l2_1.eps>
+(epstopdf)             \includegraphics on input line 215.
+Package epstopdf Info: Output file is already uptodate.
+
+<learning_curve_l2_1-eps-converted-to.pdf, id=71, 578.16pt x 433.62pt>
+File: learning_curve_l2_1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use learning_curve_l2_1-eps-converted-to.pdf>
+Package pdftex.def Info: learning_curve_l2_1-eps-converted-to.pdf used on input
+ line 215.
+(pdftex.def)             Requested size: 398.33858pt x 298.75482pt.
+ [5 <D:/GitHub/MachineLearning3/tex-v1/learning_curve_l1_1-eps-converted-to.pdf
+>] [6 <D:/GitHub/MachineLearning3/tex-v1/learning_curve_l2_1-eps-converted-to.p
+df>]
+(D:\GitHub\MachineLearning3\tex-v1\hw-template.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3023 strings out of 493921
- 41710 string characters out of 3144867
- 103387 words of memory out of 3000000
- 6256 multiletter control sequences out of 15000+200000
- 10496 words of font info for 39 fonts, out of 3000000 for 9000
+ 3056 strings out of 493921
+ 42558 string characters out of 3144867
+ 104442 words of memory out of 3000000
+ 6275 multiletter control sequences out of 15000+200000
+ 10803 words of font info for 40 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 44i,7n,24p,523b,443s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (
-x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files (x8
-6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on hw-template.pdf (3 pages, 175332 bytes).
+ 44i,8n,24p,523b,443s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
+C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on hw-template.pdf (6 pages, 247157 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
+ 166 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

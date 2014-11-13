@@ -306,7 +306,11 @@ def readData(filename):
 
 ###############################################################################
 # Draw learning curves of Perceptron
-def drawLearningCurve(maxIterationsRange, featureSet, saveFile):
+def drawLearningCurve(maxIterationsRange, regularization, featureSet, saveFile):
+	global featureComputed;
+
+	featureComputed = False
+
 	nExamples = []
 	list_t = []
 	list_v = []
@@ -314,26 +318,36 @@ def drawLearningCurve(maxIterationsRange, featureSet, saveFile):
 	max_performance = -1
 	max_maxIterations = 0
 	max_results = []
+	max_stepSize = 0
+	max_lmbd = 0
 
 	# use the accuracy to draw the learning curve
 	perfType = 0
 
-	for maxIterations in maxIterationsRange:
-		print(maxIterations)
-		(results, w) = GD(maxIterations, "l1", 0.01, 0.01, featureSet)
-		#print("final w: " + str(w))
-		nExamples.append(maxIterations)
-		list_t.append(results[0][perfType])
-		list_v.append(results[1][perfType])
-		list_ts.append(results[2][perfType])
+	for stepSize_i in xrange(10):
+		stepSize = 0.01 * (stepSize_i + 1)
+		for lmbd_i in xrange(10):
+			lmbd = 0.01 * (lmbd_i + 1)
+			for maxIterations in maxIterationsRange:
+				print(maxIterations)
+				(results, w) = GD(maxIterations, regularization, stepSize, lmbd, featureSet)
+				#print("final w: " + str(w))
+				nExamples.append(maxIterations)
+				list_t.append(results[0][perfType])
+				list_v.append(results[1][perfType])
+				list_ts.append(results[2][perfType])
 
-		# keep the best performance
-		if results[1][perfType] > max_performance:
-			max_performance = results[1][perfType]
-			max_maxIterations = maxIterations
-			max_results = results
+				# keep the best performance
+				if results[1][perfType] > max_performance:
+					max_performance = results[1][perfType]
+					max_maxIterations = maxIterations
+					max_results = results
+					max_stepSize = stepSize
+					max_lmbd = lmbd
 
 	# show the best
+	print("stepSize: " + str(max_stepSize))
+	print("lmbd: " + str(lmbd))
 	print("maxIterations: " + str(max_maxIterations) + " (accuracy: " + str(max_performance) + ")")
 	print("=== Training data ===")
 	print("accuracy: " + str(max_results[0][0]) + " / precision: " +  str(max_results[0][1]) + " / recall: " + str(max_results[0][2]) + " / F1: " + str(max_results[0][3]))
@@ -357,14 +371,14 @@ def drawLearningCurve(maxIterationsRange, featureSet, saveFile):
 	plt.plot(nExamples, list_t, "-", label="training")
 	plt.plot(nExamples, list_v, "-", label="validation")
 	plt.plot(nExamples, list_ts, "-", label="test")
-	plt.title("Learning Curve")
+	plt.title("Learning Curve (" + regularization + ", featureSet=" + str(featureSet) + ")")
 	plt.xlim(0, maxIterationsRange[-1])
 	plt.ylim(0, 1.0)
 	plt.legend(loc='lower left')
 
 	plt.savefig(saveFile)
 
-	plt.show()
+	#plt.show()
 
 
 ###############################################################################
@@ -378,7 +392,10 @@ if __name__ == '__main__':
 	#print(results)
 
 	# draw learning curves for each featureSet type
-	#drawLearningCurve(range(1, 100, 1), 1, "result1.eps")
-	drawLearningCurve(range(1, 100, 1), 2, "result2.eps")
-	#drawLearningCurve(range(1, 100, 1), 3, "result3.eps")
+	#drawLearningCurve(range(1, 200, 10), "l1", 1, "result_l1_1.eps")
+	drawLearningCurve(range(1, 200, 10), "l2", 1, "result_l2_1.eps")
+	#drawLearningCurve(range(1, 100, 10), "l1", 2, "result_l1_2.eps")
+	#drawLearningCurve(range(1, 100, 10), "l1", 2, "result_l2_2.eps")
+	#drawLearningCurve(range(1, 100, 10), "l1", 3, "result_l1_3.eps")
+	#drawLearningCurve(range(1, 100, 10), "l1", 3, "result_l2_3.eps")
 
