@@ -144,12 +144,13 @@ and
 \caption{Gradient descent algorithm applied to hige loss with l2 regularization}\label{euclid}
 \begin{algorithmic}[1]
 \Procedure{HingeRegularizedGD()}{}
-\State Initialize $w$ and $b$ randomly
+\State $w=(0, \cdots, 0)$
+\State $b=0$
 \For{$i=0$ to $maxIterations$}
 \State $\Delta w=(0, \cdots, 0)$
 \State $\Delta b=0$
-\ForAll{training data $x_d$ for $d = 1,\cdots,D$}
-\If{$y_d w \cdot x_d + b \le 1$}
+\ForAll{training data $(x_d, y_d)$ for $d = 1,\cdots,D$}
+\If{$y_d (w \cdot x_d + b) \le 1$}
 \State $\Delta w= \Delta w+y_d x_d$
 \State $\Delta b=\Delta b+y_d$
 \EndIf
@@ -157,8 +158,8 @@ and
 \State $\Delta w=\Delta w - \lambda w$
 \State $w=w+\eta \Delta w$
 \State $b=b+\eta \Delta b$
-\State \Return $w$ and $b$ when they have converged
 \EndFor
+\State \Return $w$ and $b$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
@@ -179,12 +180,13 @@ For the programming assignment, I used SVM with the hinge loss function and $l1$
 \caption{Gradient descent algorithm applied to hige loss with l1 and l2 regularization}\label{euclid}
 \begin{algorithmic}[1]
 \Procedure{GD(maxIterations, regularization, $\eta$, $\lambda$)}{}
-\State Initialize $w$ and $b$ randomly
+\State $w=(0, \cdots, 0)$
+\State $b=0$
 \For{$iter=0$ to $maxIterations$}
 \State $\Delta w=(0, \cdots, 0)$
 \State $\Delta b=0$
-\ForAll{training data $x_d$ for $d = 1,\cdots,D$}
-\If{$y_d w \cdot x_d + b \le 1$}
+\ForAll{training data $(x_d, y_d)$ for $d = 1,\cdots,D$}
+\If{$y_d (w \cdot x_d + b) \le 1$}
 \State $\Delta w= \Delta w+y_d x_d$
 \State $\Delta b=\Delta b+y_d$
 \EndIf
@@ -202,8 +204,8 @@ For the programming assignment, I used SVM with the hinge loss function and $l1$
 \EndIf
 \State $w=w+\eta \Delta w$
 \State $b=b+\eta \Delta b$
-\State \Return $w$ and $b$ when they have converged
 \EndFor
+\State \Return $w$ and $b$
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
@@ -212,17 +214,68 @@ For the programming assignment, I used SVM with the hinge loss function and $l1$
 For the continuous values, I used all the intervals between two consequtive thresholds as attributes. For instance, if an original attribute $a$ has three thresholds ${1, 2, 3}$, then the corresponding attributes will be $\{(a<1),(a\ge 1; a<2),(a\ge 2; a<3),(a\ge 3)\}$. Also, I ignored the examples that contain missing values.
 
 \subsection*{Hyper Parameters}
-There are five hyper parameters, $maxIterations$, $l1$ or $l2$, $stepSize$, $lambda$, and feature set. Unlike Perceptron algorithm, my objective function includes regularization term that somewhat avoids the overfitting. Thus, I used a very large number for maxIterations, say 20000 to get the gradient descent converged without worrying about the overfiting. For each combination of $regularization$ and $featureSet$, I used a set $\{0.0001, 0.001, 0.01, 0.1, 1\}$ for $stepSize$ and a set $\{0.0001, 0.001, 0.01, 0.1, 1\}$ for $lambda$ to find the best combination. The results are shown in Figure ?. Based on the results, I chose the combination of $stepSize$ and $labmda$ as shown in Figure ?.
-
-\subsection*{Results}
-Using the selected hyperparameters, I experimented the learned hypothesis over the test data.
+There are five hyper parameters, $maxIterations$, $l1$ or $l2$, $stepSize$, $lambda$, and feature set. Unlike Perceptron algorithm, we want to minimize the objective function without worrying about overfitting because the regularization term somewhat avoids it. Thus, I used a very large number for maxIterations, say 20000, to get the gradient descent converged. For instance, Figure \ref{fig:gradient_descent} shows the decrease of the objective function over the steps when $stepSize=0.0001$ and $labmda=0.01$. This shows that $maxIterations=20000$ is enough to converge even for a very small $stepSize$.
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=140mm]{learning_curve_l1_1}
-\caption{This figure shows the learning curve with $l1$ regularization and $featureSet=1$.}
-\label{fig:learning_curve_l1_1}
+\includegraphics[width=120mm]{gradient_descent}
+\caption{This figure shows the descrese of the objective over the steps when $stepSize=0.0001$ and $labmda=0.01$.}
+\label{fig:gradient_descent}
 \end{figure}
+
+For other hyperparameters, I employed a kind of brute-force approach to find the best ones. For each combination of $regularization$ and $featureSet$, I tried all the combination of $stepSize \in \{0.0001, 0.001, 0.01, 0.1\}$ and $labmda \in \{0.001, 0.001, 0.01, 0.1, 1\}$ in order to find the best ones. The results are shown in Table \ref{tab:best_hyperparameters}.
+
+\begin{table}[htb]
+  \begin{center}
+  \begin{tabular}{|c|c||c|c|} \hline
+    featureSet & regularization & best stepSize & best  lambda \\ \hline
+    1 & 11 & 0.1 & 0.001 \\ \hline
+    1 & 12 & 0.1 & 0.01 \\ \hline
+    2 & 11 & 1 & 0.0001 \\ \hline
+    2 & 12 & 1 & 0.0001 \\ \hline
+    3 & 11 & 1 & 0.0001 \\ \hline
+    3 & 12 & 1 & 0.0001 \\ \hline
+  \end{tabular}
+  \caption{The best combination of $stepSize$ and $lambda$}
+  \label{tab:best_hyperparameters}
+  \end{center}
+\end{table}
+
+\subsection*{Results}
+Using the best combination of hyperparameters, the classifier was learned and the performance was evaluated against the test data. The results are shown in Figures ?-?.
+
+\begin{table}[htb]
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
+    dataset & accuracy & precision & recall & F1 \\ \hline
+    training data & ? & ? & ? & ? \\ \hline
+    validation data & ? & ? & ? & ? \\ \hline
+    test data & ? & ? & ? & ? \\ \hline
+  \end{tabular}
+  \caption{The results of featurSet=1 with $l1$ regularization}
+  \label{tab:result_1_l1}
+  \end{center}
+\end{table}
+
+\begin{table}[htb]
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
+    dataset & accuracy & precision & recall & F1 \\ \hline
+    training data & 0.967 & 0.966 & 0.961 & 0.963 \\ \hline
+    validation data & 0.967 & 0.931 & 1.0 & 0.964 \\ \hline
+    test data & 0.598 & 0.568 & 0.819 & 0.671 \\ \hline
+  \end{tabular}
+  \caption{The results of featurSet=1 with $l1$ regularization}
+  \label{tab:result_1_l2}
+  \end{center}
+\end{table}
+
+Notice that the accuracy on the training data is not 1.0. This is mainly because of the regularization term that avoids overfitting.
+
+*** The regularizers $l1$ and $l2$ have different impact on the results. ....
+In general, $l1$ has weigh more on the significant attributes. In our dataset, this works better than $l2$.....
+
+
 
 \begin{figure}[hbtp]
 \centering

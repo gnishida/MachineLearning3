@@ -155,7 +155,7 @@ def buildFeatureSet(attr_index, attr_type, attr_values):
 	return featureSet
 
 ###############################################################################
-# Perceptron
+# Gradient Descent
 #
 # @param maxIterations	the maximum iteration.
 # @param regularization l1/l2
@@ -169,9 +169,6 @@ def GD(maxIterations, regularization, stepSize, lmbd, featureSet):
 	global trainFeatures
 	global valFeatures
 	global testFeatures
-
-	#attr_types = ["B", "B", "B", "B"]
-	#examples = readData("smalltrain.txt")
 
 	attr_types = ["B", "C", "C", "B", "B", "B", "B", "C", "B", "B", "C", "B", "B", "C", "C"]
 	examples = readData("train.txt")
@@ -279,31 +276,28 @@ def GD(maxIterations, regularization, stepSize, lmbd, featureSet):
 
 
 		##############################
-		L = 1/2 * lmbd * np.dot(w, w)
-		for d in xrange(len(examples)):
-			# get the true label
-			y = -1
-			if examples[d].label == "+": y = 1
+		#L = 1/2 * lmbd * np.dot(w[1:len(w)-1], w[1:len(w)-1])
+		#for d in xrange(len(examples)):
+		#	# get the true label
+		#	y = -1
+		#	if examples[d].label == "+": y = 1
 
-			L = L + max(0, 1 - y * np.dot(w, trainFeatures[d]))
+		#	L = L + max(0, 1 - y * np.dot(w, trainFeatures[d]))
 
-		list_L.append(L)
-		list_w.append(stepSize * stepSize * np.dot(dw, dw))
+		#list_L.append(L)
+		#list_w.append(np.dot(w[1:len(w)-1], w[1:len(w)-1]))
 
-		if abs(L - prevL) < threshold:
-			#print("Converged: iter=" + str(iter))
-			maxIterations = iter+1
-			break
-		prevL = L
+		#if abs(L - prevL) < threshold:
+			#maxIterations = iter+1
+			#break
+		#prevL = L
 
 
 	##################################
 	# show the GD graph
-	#plt.plot(range(maxIterations), list_L, "-", label="L")
-	#plt.plot(range(maxIterations), list_w, "-", label="dw")
+	#plt.plot(range(maxIterations), list_L, "-")
 	#plt.title("Gradient Descent (stepSize=" + str(stepSize) + ", labmda=" + str(lmbd) + ")")
 	#plt.xlim(0, maxIterations)
-	#plt.legend(loc='upper right')
 	#plt.savefig("GD_" + str(stepSize) + "_" + str(lmbd) + ".eps")
 	#plt.show()
 
@@ -349,9 +343,9 @@ def readData(filename):
 
 	return examples
 
-def findBestLambda(regularization, featureSet):
-	stepSizeList = [1, 0.1, 0.01, 0.001, 0.0001]
-	lambdaList = [0.0001, 0.001, 0.01, 0.1, 1]
+def findBestHyperparameters(regularization, featureSet):
+	stepSizeList = [0.1, 0.01, 0.001, 0.0001]
+	lambdaList = [0.001, 0.01, 0.1, 1]
 
 	featureComputed = False
 
@@ -369,7 +363,9 @@ def findBestLambda(regularization, featureSet):
 		list_performance = []
 
 		for lmbd in lambdaList:
-			(results, w) = GD(20000, regularization, stepSize, lmbd, featureSet)
+			print("stepSize: " + str(stepSize) + ", lambda: " + str(lmbd))
+
+			(results, w) = GD(10000, regularization, stepSize, lmbd, featureSet)
 			if results[1][perfType] > best_performance:
 				best_performance = results[1][perfType]
 				best_results = results
@@ -475,11 +471,11 @@ if __name__ == '__main__':
 	# this flag is to avoid the redundant computation when extracting feature vectors
 	featureComputed = False
 
-	#(results, w) = GD(10000, "l2", 0.01, 10, 1)
+	#(results, w) = GD(20000, "l2", 0.0001, 0.01, 1)
 	#print(results)
 
 	# find the best lambda
-	findBestLambda("l2", 2)
+	findBestHyperparameters("l1", 2)
 
 	# draw learning curves for each featureSet type
 	#drawLearningCurve(range(1, 1500, 200), "l1", 1, "result_l1_1.eps")
