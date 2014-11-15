@@ -479,7 +479,7 @@ if __name__ == '__main__':
 	#print(results)
 
 	# find the best lambda
-	findBestLambda("l2", 2)
+	findBestLambda("l2", 1)
 
 	# draw learning curves for each featureSet type
 	#drawLearningCurve(range(1, 1500, 200), "l1", 1, "result_l1_1.eps")

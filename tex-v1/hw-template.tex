@@ -121,13 +121,21 @@ $l1$ regularization uses $l1$ norm of $w$ as the regularization term, which enco
 
 The objective function is
 \[
-F(w)=\frac{\lambda}{2}\|w\|^2+\sum_i \max{(0, 1-y_iw^Tx_i)}
+F(w)=\frac{\lambda}{2}\|w\|^2+\sum_i \max{(0, 1-y_i (w^Tx_i+b))}
 \]
-Then, its derivative is
+Then, its partial derivative with regard to $w$ and $b$ are
 \[
 \frac{\partial F(w)}{w}=\lambda w+ \sum_i
 \begin{cases}
--y_i x_i & ({\rm if} \; y_iw^Tx_i \le 1) \\
+-y_i x_i & ({\rm if} \; y_i(w^Tx_i+b) \le 1) \\
+0 & {\rm Otherwise}
+\end{cases}
+\]
+and
+\[
+\frac{\partial F(w)}{b}=\sum_i
+\begin{cases}
+-y_i & ({\rm if} \; y_i(w^Tx_i+b) \le 1) \\
 0 & {\rm Otherwise}
 \end{cases}
 \]
@@ -136,17 +144,20 @@ Then, its derivative is
 \caption{Gradient descent algorithm applied to hige loss with l2 regularization}\label{euclid}
 \begin{algorithmic}[1]
 \Procedure{HingeRegularizedGD()}{}
-\State Initialize $w$ randomly
+\State Initialize $w$ and $b$ randomly
 \For{$i=0$ to $maxIterations$}
 \State $\Delta w=(0, \cdots, 0)$
+\State $\Delta b=0$
 \ForAll{training data $x_d$ for $d = 1,\cdots,D$}
-\If{$y_d w \cdot x_d \le 1$}
+\If{$y_d w \cdot x_d + b \le 1$}
 \State $\Delta w= \Delta w+y_d x_d$
+\State $\Delta b=\Delta b+y_d$
 \EndIf
 \EndFor
 \State $\Delta w=\Delta w - \lambda w$
 \State $w=w+\eta \Delta w$
-\State \Return $w$ when it has converged
+\State $b=b+\eta \Delta b$
+\State \Return $w$ and $b$ when they have converged
 \EndFor
 \EndProcedure
 \end{algorithmic}
@@ -168,12 +179,14 @@ For the programming assignment, I used SVM with the hinge loss function and $l1$
 \caption{Gradient descent algorithm applied to hige loss with l1 and l2 regularization}\label{euclid}
 \begin{algorithmic}[1]
 \Procedure{GD(maxIterations, regularization, $\eta$, $\lambda$)}{}
-\State Initialize $w$ randomly
+\State Initialize $w$ and $b$ randomly
 \For{$iter=0$ to $maxIterations$}
 \State $\Delta w=(0, \cdots, 0)$
+\State $\Delta b=0$
 \ForAll{training data $x_d$ for $d = 1,\cdots,D$}
-\If{$y_d w \cdot x_d \le 1$}
+\If{$y_d w \cdot x_d + b \le 1$}
 \State $\Delta w= \Delta w+y_d x_d$
+\State $\Delta b=\Delta b+y_d$
 \EndIf
 \EndFor
 \If{regularization == $l1$}
@@ -188,20 +201,21 @@ For the programming assignment, I used SVM with the hinge loss function and $l1$
 \State $\Delta w=\Delta w - \lambda w$
 \EndIf
 \State $w=w+\eta \Delta w$
-\State \Return $w$ when it has converged
+\State $b=b+\eta \Delta b$
+\State \Return $w$ and $b$ when they have converged
 \EndFor
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
 \subsection*{Feature Set}
-For the continuous values, I used all the thresholds as attributes. For instance, if an original attribute $a$ has three thresholds ${1, 2, 3}$, then the corresponding attributes will be $\{(a<1),(a\ge 1; a<2),(a\ge 2; a<3),(a\ge 3)\}$. Also, I ignored the examples that contain missing values.
+For the continuous values, I used all the intervals between two consequtive thresholds as attributes. For instance, if an original attribute $a$ has three thresholds ${1, 2, 3}$, then the corresponding attributes will be $\{(a<1),(a\ge 1; a<2),(a\ge 2; a<3),(a\ge 3)\}$. Also, I ignored the examples that contain missing values.
 
 \subsection*{Hyper Parameters}
-There are so many hyper parameters, $maxIterations$, $l1$ or $l2$, $stepSize$, $lambda$, and feature set, but some hyper parameters are dependent to each other. For instance, having small $stepSize$ and $lambda$ can increase the number of iterations to converge, while large $stepSize$ and $lambda$ may cause oscillation. Thus, I chosed small values for $stepSize$ and $labmda$, that is, $stepSize=0.01$ and $lambda=0.01$. 
+There are five hyper parameters, $maxIterations$, $l1$ or $l2$, $stepSize$, $lambda$, and feature set. Unlike Perceptron algorithm, my objective function includes regularization term that somewhat avoids the overfitting. Thus, I used a very large number for maxIterations, say 20000 to get the gradient descent converged without worrying about the overfiting. For each combination of $regularization$ and $featureSet$, I used a set $\{0.0001, 0.001, 0.01, 0.1, 1\}$ for $stepSize$ and a set $\{0.0001, 0.001, 0.01, 0.1, 1\}$ for $lambda$ to find the best combination. The results are shown in Figure ?. Based on the results, I chose the combination of $stepSize$ and $labmda$ as shown in Figure ?.
 
 \subsection*{Results}
-Then, I experimented with all the combinations of $regularization=l1,l2$ and $featureSet=1,2,3$ as increasing $maxIterations$ from 1 to 200. The learning curve is shown in Figures 4-8.
+Using the selected hyperparameters, I experimented the learned hypothesis over the test data.
 
 \begin{figure}[hbtp]
 \centering

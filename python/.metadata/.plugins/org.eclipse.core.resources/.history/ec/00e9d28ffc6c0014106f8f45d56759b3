@@ -350,10 +350,8 @@ def readData(filename):
 	return examples
 
 def findBestLambda(regularization, featureSet):
-	stepSizeList = [1, 0.1, 0.01, 0.001, 0.0001]
-	lambdaList = [0.0001, 0.001, 0.01, 0.1, 1]
-
-	featureComputed = False
+	stepSizeList = [1, 0.1, 0.01, 0.001, 0.0001, 0.00001]
+	lambdaList = [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000]
 
 	# use the accuracy to draw the learning curve
 	perfType = 0
@@ -365,9 +363,6 @@ def findBestLambda(regularization, featureSet):
 	best_results = []
 
 	for stepSize in stepSizeList:
-		list_lambda = []
-		list_performance = []
-
 		for lmbd in lambdaList:
 			(results, w) = GD(20000, regularization, stepSize, lmbd, featureSet)
 			if results[1][perfType] > best_performance:
@@ -375,12 +370,6 @@ def findBestLambda(regularization, featureSet):
 				best_results = results
 				best_stepSize = stepSize
 				best_labmda = lmbd
-
-			list_lambda.append(math.log(lmbd))
-			list_performance.append(results[1][perfType])
-
-		plt.plot(list_lambda, list_performance, "-", label="stepSIze=" + str(stepSize))
-
 
 	# show the best
 	print("stepSize: " + str(best_stepSize) + ", labmda: " + str(best_labmda))
@@ -391,14 +380,6 @@ def findBestLambda(regularization, featureSet):
 	print("=== Test data ===")
 	print("accuracy: " + str(best_results[2][0]) + " / precision: " +  str(best_results[2][1]) + " / recall: " + str(best_results[2][2]) + " / F1: " + str(best_results[2][3]))
 
-	# show the accuracy graph
-	plt.title("Performance of learned hypothesis (" + regularization + ", featureSet=" + str(featureSet))
-	plt.ylim(0, 1.0)
-	plt.legend(loc='lower left')
-
-	plt.savefig("performance_" + regularization + "_" + str(featureSet) + ".eps")
-
-	plt.show()
 
 ###############################################################################
 # Draw learning curves of Perceptron
@@ -479,7 +460,7 @@ if __name__ == '__main__':
 	#print(results)
 
 	# find the best lambda
-	findBestLambda("l2", 2)
+	findBestLambda("l2", 1)
 
 	# draw learning curves for each featureSet type
 	#drawLearningCurve(range(1, 1500, 200), "l1", 1, "result_l1_1.eps")

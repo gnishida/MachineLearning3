@@ -351,9 +351,7 @@ def readData(filename):
 
 def findBestLambda(regularization, featureSet):
 	stepSizeList = [1, 0.1, 0.01, 0.001, 0.0001]
-	lambdaList = [0.0001, 0.001, 0.01, 0.1, 1]
-
-	featureComputed = False
+	lambdaList = [0.0001, 0.001, 0.01, 0.1, 1, 10]
 
 	# use the accuracy to draw the learning curve
 	perfType = 0
@@ -396,7 +394,7 @@ def findBestLambda(regularization, featureSet):
 	plt.ylim(0, 1.0)
 	plt.legend(loc='lower left')
 
-	plt.savefig("performance_" + regularization + "_" + str(featureSet) + ".eps")
+	plt.savefig("performance_" + regularization + "_" + str(featureSet))
 
 	plt.show()
 
@@ -479,7 +477,7 @@ if __name__ == '__main__':
 	#print(results)
 
 	# find the best lambda
-	findBestLambda("l2", 2)
+	findBestLambda("l2", 1)
 
 	# draw learning curves for each featureSet type
 	#drawLearningCurve(range(1, 1500, 200), "l1", 1, "result_l1_1.eps")
