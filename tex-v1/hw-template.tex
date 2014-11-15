@@ -125,9 +125,9 @@ F(w)=\frac{\lambda}{2}\|w\|^2+\sum_i \max{(0, 1-y_iw^Tx_i)}
 \]
 Then, its derivative is
 \[
-\frac{\partial F(w)}{w}=\lambda w+
+\frac{\partial F(w)}{w}=\lambda w+ \sum_i
 \begin{cases}
-1-y_i x_i & ({\rm if} \; y_iw^Tx_i \le 1) \\
+-y_i x_i & ({\rm if} \; y_iw^Tx_i \le 1) \\
 0 & {\rm Otherwise}
 \end{cases}
 \]
@@ -146,7 +146,7 @@ Then, its derivative is
 \EndFor
 \State $\Delta w=\Delta w - \lambda w$
 \State $w=w+\eta \Delta w$
-\State \Return $w$ when it has converted
+\State \Return $w$ when it has converged
 \EndFor
 \EndProcedure
 \end{algorithmic}

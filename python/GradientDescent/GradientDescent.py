@@ -181,6 +181,9 @@ def GD(maxIterations, regularization, stepSize, lmbd, featureSet):
 	for attr_index in xrange(len(attr_types)):
 		attr_values[attr_index] = []
 
+		#######################DEBUG######################
+		#if attr_types[attr_index] == "C": continue
+
 		if attr_types[attr_index] == "B":
 			for example in examples:
 				if example.row[attr_index] == "?": continue
@@ -198,6 +201,9 @@ def GD(maxIterations, regularization, stepSize, lmbd, featureSet):
 	vars = []
 	if featureSet == 1 or featureSet == 3:
 		for attr_index in xrange(len(attr_types)):
+			#######################DEBUG######################
+			#if attr_types[attr_index] == "C": continue
+
 			vars += buildFeatureSet(attr_index, attr_types[attr_index], attr_values[attr_index])
 
 
@@ -222,7 +228,7 @@ def GD(maxIterations, regularization, stepSize, lmbd, featureSet):
 
 	# initialize the weight vector
 	#w = np.random.rand(len(vars) + 1)
-	w = np.zeros(len(vars) + 1)
+	w = np.zeros(len(vars) + 1, dtype=np.float)
 	if debug:
 		print("initial w: " + str(w))
 
@@ -234,34 +240,73 @@ def GD(maxIterations, regularization, stepSize, lmbd, featureSet):
 			for trainFeature in trainFeatures:
 				print(trainFeature)
 
+
+	################################
+	list_L = []
+	list_w = []
+	prevL = 0
+	threshold = 0.00001
+
 	for iter in xrange(maxIterations):
-		dw = np.zeros(len(vars) + 1)
-		for i in xrange(len(examples)):
+		dw = np.zeros(len(vars) + 1, dtype=np.float)
+		for d in xrange(len(examples)):
 			# get the true label
 			y = -1
-			if examples[i].label == "+": y = 1
+			if examples[d].label == "+": y = 1
 
 			# compute the delta w by hinge loss
-			if y * np.dot(w, trainFeatures[i]) <= 1:
-				dw += y * trainFeatures[i]
+			if y * np.dot(w, trainFeatures[d]) <= 1:
+				dw += y * trainFeatures[d]
 
 		# regularization term
 		if regularization == "l1":
-			#dw -= lmbd;
-			for i in xrange(len(dw)):
-				if w[i] >= 0:
-					dw[i] -= lmbd
+			#for k in xrange(len(dw)):
+			for k in xrange(len(dw) - 1):
+				if w[k] >= 0:
+					dw[k] -= lmbd
 				else:
-					dw[i] += lmbd
-		else:
-			# l2 norm
-			dw -= lmbd * w;
+					dw[k] += lmbd
+		else: # l2 norm
+			for k in xrange(len(dw) - 1):
+				dw[k] -= lmbd * w[k];
+			#dw[k] -= lmbd * w;
 
 		# update the weight vector
 		w += stepSize * dw
 
 		if debug:
 			print("w: " + str(w))
+
+
+		##############################
+		L = 1/2 * lmbd * np.dot(w, w)
+		for d in xrange(len(examples)):
+			# get the true label
+			y = -1
+			if examples[d].label == "+": y = 1
+
+			L = L + max(0, 1 - y * np.dot(w, trainFeatures[d]))
+
+		list_L.append(L)
+		list_w.append(stepSize * stepSize * np.dot(dw, dw))
+
+		if abs(L - prevL) < threshold:
+			print("Converged: iter=" + str(iter))
+			maxIterations = iter+1
+			break
+		prevL = L
+
+
+	##################################
+	# show the GD graph
+	#plt.plot(range(maxIterations), list_L, "-", label="L")
+	#plt.plot(range(maxIterations), list_w, "-", label="dw")
+	#plt.title("Gradient Descent (stepSize=" + str(stepSize) + ", labmda=" + str(lmbd) + ")")
+	#plt.xlim(0, maxIterations)
+	#plt.legend(loc='upper right')
+	#plt.savefig("GD_" + str(stepSize) + "_" + str(lmbd) + ".eps")
+	#plt.show()
+
 
 	ret = []
 	#print("============== test on the training data ========")
@@ -304,6 +349,38 @@ def readData(filename):
 
 	return examples
 
+def findBestLambda(regularization, featureSet):
+	stepSizeList = [1, 0.1, 0.01, 0.001, 0.0001, 0.00001]
+	lambdaList = [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000]
+
+	# use the accuracy to draw the learning curve
+	perfType = 0
+
+	best_performance = -1
+	best_stepSize = 0
+	best_lambda = 0
+
+	best_results = []
+
+	for stepSize in stepSizeList:
+		for lmbd in lambdaList:
+			(results, w) = GD(20000, regularization, stepSize, lmbd, featureSet)
+			if results[1][perfType] > best_performance:
+				best_performance = results[1][perfType]
+				best_results = results
+				best_stepSize = stepSize
+				best_labmda = lmbd
+
+	# show the best
+	print("stepSize: " + str(best_stepSize) + ", labmda: " + str(best_labmda))
+	print("=== Training data ===")
+	print("accuracy: " + str(best_results[0][0]) + " / precision: " +  str(best_results[0][1]) + " / recall: " + str(best_results[0][2]) + " / F1: " + str(best_results[0][3]))
+	print("=== Validation data ===")
+	print("accuracy: " + str(best_results[1][0]) + " / precision: " +  str(best_results[1][1]) + " / recall: " + str(best_results[1][2]) + " / F1: " + str(best_results[1][3]))
+	print("=== Test data ===")
+	print("accuracy: " + str(best_results[2][0]) + " / precision: " +  str(best_results[2][1]) + " / recall: " + str(best_results[2][2]) + " / F1: " + str(best_results[2][3]))
+
+
 ###############################################################################
 # Draw learning curves of Perceptron
 def drawLearningCurve(maxIterationsRange, regularization, featureSet, saveFile):
@@ -318,36 +395,28 @@ def drawLearningCurve(maxIterationsRange, regularization, featureSet, saveFile):
 	max_performance = -1
 	max_maxIterations = 0
 	max_results = []
-	max_stepSize = 0
-	max_lmbd = 0
 
 	# use the accuracy to draw the learning curve
 	perfType = 0
 
-	for stepSize_i in xrange(10):
-		stepSize = 0.01 * (stepSize_i + 1)
-		for lmbd_i in xrange(10):
-			lmbd = 0.01 * (lmbd_i + 1)
-			for maxIterations in maxIterationsRange:
-				print(maxIterations)
-				(results, w) = GD(maxIterations, regularization, stepSize, lmbd, featureSet)
-				#print("final w: " + str(w))
-				nExamples.append(maxIterations)
-				list_t.append(results[0][perfType])
-				list_v.append(results[1][perfType])
-				list_ts.append(results[2][perfType])
+	max_performance = -1
 
-				# keep the best performance
-				if results[1][perfType] > max_performance:
-					max_performance = results[1][perfType]
-					max_maxIterations = maxIterations
-					max_results = results
-					max_stepSize = stepSize
-					max_lmbd = lmbd
+	for maxIterations in maxIterationsRange:
+		print(maxIterations)
+		(results, w) = GD(maxIterations, regularization, 0.01, 1, featureSet)
+		#print("final w: " + str(w))
+		nExamples.append(maxIterations)
+		list_t.append(results[0][perfType])
+		list_v.append(results[1][perfType])
+		list_ts.append(results[2][perfType])
+
+		# keep the best performance
+		if results[1][perfType] > max_performance:
+			max_performance = results[1][perfType]
+			max_maxIterations = maxIterations
+			max_results = results
 
 	# show the best
-	print("stepSize: " + str(max_stepSize))
-	print("lmbd: " + str(lmbd))
 	print("maxIterations: " + str(max_maxIterations) + " (accuracy: " + str(max_performance) + ")")
 	print("=== Training data ===")
 	print("accuracy: " + str(max_results[0][0]) + " / precision: " +  str(max_results[0][1]) + " / recall: " + str(max_results[0][2]) + " / F1: " + str(max_results[0][3]))
@@ -378,7 +447,7 @@ def drawLearningCurve(maxIterationsRange, regularization, featureSet, saveFile):
 
 	plt.savefig(saveFile)
 
-	#plt.show()
+	plt.show()
 
 
 ###############################################################################
@@ -387,13 +456,15 @@ if __name__ == '__main__':
 	# this flag is to avoid the redundant computation when extracting feature vectors
 	featureComputed = False
 
-	#GD(2000, "l1", 0.1, 0.01, 1)
-	#(results, w) = GD(2000, "l2", 0.1, 0.01, 1)
+	#(results, w) = GD(10000, "l2", 0.01, 10, 1)
 	#print(results)
 
+	# find the best lambda
+	findBestLambda("l2", 1)
+
 	# draw learning curves for each featureSet type
-	#drawLearningCurve(range(1, 200, 10), "l1", 1, "result_l1_1.eps")
-	drawLearningCurve(range(1, 200, 10), "l2", 1, "result_l2_1.eps")
+	#drawLearningCurve(range(1, 1500, 200), "l1", 1, "result_l1_1.eps")
+	#drawLearningCurve(range(1, 1000, 100), "l2", 1, "result_l2_1.eps")
 	#drawLearningCurve(range(1, 100, 10), "l1", 2, "result_l1_2.eps")
 	#drawLearningCurve(range(1, 100, 10), "l1", 2, "result_l2_2.eps")
 	#drawLearningCurve(range(1, 100, 10), "l1", 3, "result_l1_3.eps")

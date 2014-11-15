@@ -1553,3 +1553,290 @@ java.net.URISyntaxException: Illegal character in path at index 16: file:/C:/Pro
 
 !ENTRY com.google.eclipse.mechanic 2 0 2014-11-13 15:31:28.620
 !MESSAGE Directory '\mechanic' does not exist.
+!SESSION 2014-11-14 08:40:01.639 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.python.pydev.shared_core 4 4 2014-11-14 08:40:09.769
+!MESSAGE Unable to resolve module for:L/GradientDescent/GradientDescent.py
+!STACK 0
+java.lang.RuntimeException: Unable to resolve module for:L/GradientDescent/GradientDescent.py
+	at org.python.pydev.builder.PyDevBuilderVisitor.getModuleName(PyDevBuilderVisitor.java:210)
+	at com.python.pydev.analysis.builder.AnalysisBuilderVisitor.doVisitChangedResource(AnalysisBuilderVisitor.java:171)
+	at com.python.pydev.analysis.builder.AnalysisParserObserver.analyze(AnalysisParserObserver.java:179)
+	at com.python.pydev.analysis.builder.AnalysisParserObserver.parserChanged(AnalysisParserObserver.java:144)
+	at org.python.pydev.parser.PyParser.fireParserChanged(PyParser.java:214)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:328)
+	at org.python.pydev.shared_core.parsing.BaseParser.reparseDocument(BaseParser.java:1)
+	at org.python.pydev.shared_core.parsing.ParserScheduler.reparseDocument(ParserScheduler.java:162)
+	at org.python.pydev.shared_core.parsing.ParsingThread.run(ParsingThread.java:54)
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-11-14 08:40:10.992
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\gnishida'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.google.eclipse.mechanic 4 0 2014-11-14 08:40:14.771
+!MESSAGE Can't compute Mechanic Configuration directory: file:/C:/Program Files/Brainwy/LiClipse 1.0.0/
+!STACK 0
+java.net.URISyntaxException: Illegal character in path at index 16: file:/C:/Program Files/Brainwy/LiClipse 1.0.0/
+	at java.net.URI$Parser.fail(Unknown Source)
+	at java.net.URI$Parser.checkChars(Unknown Source)
+	at java.net.URI$Parser.parseHierarchical(Unknown Source)
+	at java.net.URI$Parser.parse(Unknown Source)
+	at java.net.URI.<init>(Unknown Source)
+	at com.google.eclipse.mechanic.internal.MechanicConfigurationVariableInitializer.initialize(MechanicConfigurationVariableInitializer.java:25)
+	at org.eclipse.core.internal.variables.ContributedValueVariable.initialize(ContributedValueVariable.java:93)
+	at org.eclipse.core.internal.variables.ContributedValueVariable.getValue(ContributedValueVariable.java:73)
+	at org.eclipse.core.internal.variables.StringSubstitutionEngine.resolve(StringSubstitutionEngine.java:278)
+	at org.eclipse.core.internal.variables.StringSubstitutionEngine.substitute(StringSubstitutionEngine.java:192)
+	at org.eclipse.core.internal.variables.StringSubstitutionEngine.performStringSubstitution(StringSubstitutionEngine.java:87)
+	at org.eclipse.core.internal.variables.StringVariableManager.performStringSubstitution(StringVariableManager.java:592)
+	at org.eclipse.core.internal.variables.StringVariableManager.performStringSubstitution(StringVariableManager.java:358)
+	at com.google.eclipse.mechanic.internal.VariableManagerStringParser.apply(VariableManagerStringParser.java:32)
+	at com.google.eclipse.mechanic.internal.VariableManagerStringParser.apply(VariableManagerStringParser.java:1)
+	at com.google.eclipse.mechanic.internal.ResourceTaskProviderParser.parse(ResourceTaskProviderParser.java:51)
+	at com.google.eclipse.mechanic.plugin.core.OldMechanicPreferences.getTaskProviders(OldMechanicPreferences.java:80)
+	at com.google.eclipse.mechanic.internal.RegisteredTaskProvidersSupplier.get(RegisteredTaskProvidersSupplier.java:41)
+	at com.google.eclipse.mechanic.internal.RegisteredTaskProvidersSupplier.get(RegisteredTaskProvidersSupplier.java:1)
+	at com.google.eclipse.mechanic.DirectoryIteratingTaskScanner.scan(DirectoryIteratingTaskScanner.java:28)
+	at com.google.eclipse.mechanic.internal.RootTaskScanner.scan(RootTaskScanner.java:47)
+	at com.google.eclipse.mechanic.MechanicService.updateTasks(MechanicService.java:273)
+	at com.google.eclipse.mechanic.MechanicService.update(MechanicService.java:237)
+	at com.google.eclipse.mechanic.MechanicService.run(MechanicService.java:172)
+	at com.google.eclipse.mechanic.MechanicService.access$2(MechanicService.java:167)
+	at com.google.eclipse.mechanic.MechanicService$ServiceJob.run(MechanicService.java:374)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.google.eclipse.mechanic 2 0 2014-11-14 08:40:14.775
+!MESSAGE Directory 'C:\Users\gnishida\.eclipse\mechanic' does not exist.
+
+!ENTRY com.google.eclipse.mechanic 2 0 2014-11-14 08:40:14.778
+!MESSAGE Directory '\mechanic' does not exist.
+
+!ENTRY org.python.pydev.shared_core 4 4 2014-11-14 08:53:42.271
+!MESSAGE Unhandled: ExtSlice[dims=[Slice[lower=null, upper=null, step=null], Index[value=Attribute[value=Name[id=np, ctx=Load, reserved=false], attr=NameTok[id=newaxis, ctx=Attrib], ctx=Load]]]]
+!STACK 0
+java.lang.RuntimeException: Unhandled: ExtSlice[dims=[Slice[lower=null, upper=null, step=null], Index[value=Attribute[value=Name[id=np, ctx=Load, reserved=false], attr=NameTok[id=newaxis, ctx=Attrib], ctx=Load]]]]
+	at org.python.pydev.parser.prettyprinterv2.MakeAstValidForPrettyPrintingVisitor.unhandled_node(MakeAstValidForPrettyPrintingVisitor.java:105)
+	at org.python.pydev.parser.jython.ast.VisitorBase.visitExtSlice(VisitorBase.java:345)
+	at org.python.pydev.parser.jython.ast.ExtSlice.accept(ExtSlice.java:79)
+	at org.python.pydev.parser.prettyprinterv2.MakeAstValidForPrettyPrintingVisitor.visitSubscript(MakeAstValidForPrettyPrintingVisitor.java:933)
+	at org.python.pydev.parser.jython.ast.Subscript.accept(Subscript.java:93)
+	at org.python.pydev.parser.prettyprinterv2.MakeAstValidForPrettyPrintingVisitor.visitAssign(MakeAstValidForPrettyPrintingVisitor.java:184)
+	at org.python.pydev.parser.jython.ast.Assign.accept(Assign.java:90)
+	at org.python.pydev.parser.prettyprinterv2.MakeAstValidForPrettyPrintingVisitor.makeValid(MakeAstValidForPrettyPrintingVisitor.java:171)
+	at org.python.pydev.editor.hover.PyTextHover.getDocstringHover(PyTextHover.java:238)
+	at org.python.pydev.editor.hover.PyTextHover.getHoverInfo(PyTextHover.java:150)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.python.pydev.shared_core 4 4 2014-11-14 08:53:42.271
+!MESSAGE String index out of range: -4
+!STACK 0
+java.lang.StringIndexOutOfBoundsException: String index out of range: -4
+	at org.python.pydev.shared_core.string.FastStringBuffer.delete(FastStringBuffer.java:518)
+	at org.python.pydev.parser.prettyprinterv2.WriteStateV2.dedent(WriteStateV2.java:64)
+	at org.python.pydev.parser.prettyprinterv2.PrettyPrinterV2.writeLinePart(PrettyPrinterV2.java:241)
+	at org.python.pydev.parser.prettyprinterv2.PrettyPrinterV2.print(PrettyPrinterV2.java:163)
+	at org.python.pydev.editor.hover.PyTextHover.printAst(PyTextHover.java:327)
+	at org.python.pydev.editor.hover.PyTextHover.getDocstringHover(PyTextHover.java:280)
+	at org.python.pydev.editor.hover.PyTextHover.getHoverInfo(PyTextHover.java:150)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.equinox.event 4 0 2014-11-15 03:23:47.517
+!MESSAGE Exception while dispatching event org.osgi.service.event.Event [topic=org/eclipse/e4/ui/model/ui/UIElement/widget/SET] to handler org.eclipse.e4.ui.services.internal.events.UIEventHandler@107ed780
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.ui.internal.NavigationHistory.getDisplay(NavigationHistory.java:176)
+	at org.eclipse.ui.internal.NavigationHistory.markEditor(NavigationHistory.java:193)
+	at org.eclipse.ui.internal.WorkbenchPage.updateActiveEditorSources(WorkbenchPage.java:400)
+	at org.eclipse.ui.internal.WorkbenchPage.firePartClosed(WorkbenchPage.java:4931)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart$1.handleEvent(CompatibilityPart.java:97)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler$1.run(UIEventHandler.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.syncExec(Synchronizer.java:187)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:156)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4734)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application$1.syncExec(E4Application.java:218)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.handleEvent(UIEventHandler.java:36)
+	at org.eclipse.equinox.internal.event.EventHandlerWrapper.handleEvent(EventHandlerWrapper.java:197)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:197)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:148)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.dispatchEvent(EventAdminImpl.java:135)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.sendEvent(EventAdminImpl.java:78)
+	at org.eclipse.equinox.internal.event.EventComponent.sendEvent(EventComponent.java:39)
+	at org.eclipse.e4.ui.services.internal.events.EventBroker.send(EventBroker.java:81)
+	at org.eclipse.e4.ui.internal.workbench.UIEventPublisher.notifyChanged(UIEventPublisher.java:59)
+	at org.eclipse.emf.common.notify.impl.BasicNotifierImpl.eNotify(BasicNotifierImpl.java:374)
+	at org.eclipse.e4.ui.model.application.ui.impl.UIElementImpl.setWidget(UIElementImpl.java:261)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.unbindWidget(SWTPartRenderer.java:149)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer$1.widgetDisposed(SWTPartRenderer.java:137)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:123)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4353)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1061)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1085)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:816)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:874)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:819)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:874)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:819)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:874)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:819)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:874)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:819)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:874)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:819)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:874)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:819)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:874)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:819)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:874)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:819)
+	at org.eclipse.swt.widgets.Composite.releaseChildren(Composite.java:874)
+	at org.eclipse.swt.widgets.Canvas.releaseChildren(Canvas.java:165)
+	at org.eclipse.swt.widgets.Decorations.releaseChildren(Decorations.java:789)
+	at org.eclipse.swt.widgets.Shell.releaseChildren(Shell.java:1290)
+	at org.eclipse.swt.widgets.Widget.release(Widget.java:819)
+	at org.eclipse.swt.widgets.Widget.dispose(Widget.java:454)
+	at org.eclipse.swt.widgets.Decorations.dispose(Decorations.java:447)
+	at org.eclipse.swt.widgets.Shell.dispose(Shell.java:715)
+	at org.eclipse.swt.widgets.Display.release(Display.java:3811)
+	at org.eclipse.swt.graphics.Device.dispose(Device.java:295)
+	at org.eclipse.swt.widgets.Display.messageProc(Display.java:3292)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4705)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1626)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2075)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5036)
+	at org.eclipse.swt.internal.win32.OS.PeekMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.PeekMessage(OS.java:3141)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3756)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:832)
+	at org.eclipse.jface.window.Window.open(Window.java:808)
+	at org.eclipse.jface.dialogs.MessageDialog.open(MessageDialog.java:341)
+	at org.eclipse.jface.dialogs.MessageDialogWithToggle.open(MessageDialogWithToggle.java:114)
+	at org.eclipse.jface.dialogs.MessageDialogWithToggle.openOkCancelConfirm(MessageDialogWithToggle.java:209)
+	at com.brainwy.liclipse.rcp.IDEWorkbenchWindowAdvisor.promptOnExit(IDEWorkbenchWindowAdvisor.java:207)
+	at com.brainwy.liclipse.rcp.IDEWorkbenchAdvisor$1.handleEvent(IDEWorkbenchAdvisor.java:154)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4353)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4346)
+	at org.eclipse.swt.widgets.Display.messageProc(Display.java:3305)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4705)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1626)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2075)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5036)
+	at org.eclipse.swt.internal.win32.OS.PeekMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.PeekMessage(OS.java:3141)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3756)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1032)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:148)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:636)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:579)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at com.brainwy.liclipse.rcp.IDEApplication.start(IDEApplication.java:195)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:382)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:236)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+!SESSION 2014-11-15 08:46:54.054 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2014-11-15 08:47:07.288
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-11-15 08:47:35.398
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\gnishida'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.google.eclipse.mechanic 4 0 2014-11-15 08:47:39.574
+!MESSAGE Can't compute Mechanic Configuration directory: file:/C:/Program Files/Brainwy/LiClipse 1.0.0/
+!STACK 0
+java.net.URISyntaxException: Illegal character in path at index 16: file:/C:/Program Files/Brainwy/LiClipse 1.0.0/
+	at java.net.URI$Parser.fail(Unknown Source)
+	at java.net.URI$Parser.checkChars(Unknown Source)
+	at java.net.URI$Parser.parseHierarchical(Unknown Source)
+	at java.net.URI$Parser.parse(Unknown Source)
+	at java.net.URI.<init>(Unknown Source)
+	at com.google.eclipse.mechanic.internal.MechanicConfigurationVariableInitializer.initialize(MechanicConfigurationVariableInitializer.java:25)
+	at org.eclipse.core.internal.variables.ContributedValueVariable.initialize(ContributedValueVariable.java:93)
+	at org.eclipse.core.internal.variables.ContributedValueVariable.getValue(ContributedValueVariable.java:73)
+	at org.eclipse.core.internal.variables.StringSubstitutionEngine.resolve(StringSubstitutionEngine.java:278)
+	at org.eclipse.core.internal.variables.StringSubstitutionEngine.substitute(StringSubstitutionEngine.java:192)
+	at org.eclipse.core.internal.variables.StringSubstitutionEngine.performStringSubstitution(StringSubstitutionEngine.java:87)
+	at org.eclipse.core.internal.variables.StringVariableManager.performStringSubstitution(StringVariableManager.java:592)
+	at org.eclipse.core.internal.variables.StringVariableManager.performStringSubstitution(StringVariableManager.java:358)
+	at com.google.eclipse.mechanic.internal.VariableManagerStringParser.apply(VariableManagerStringParser.java:32)
+	at com.google.eclipse.mechanic.internal.VariableManagerStringParser.apply(VariableManagerStringParser.java:1)
+	at com.google.eclipse.mechanic.internal.ResourceTaskProviderParser.parse(ResourceTaskProviderParser.java:51)
+	at com.google.eclipse.mechanic.plugin.core.OldMechanicPreferences.getTaskProviders(OldMechanicPreferences.java:80)
+	at com.google.eclipse.mechanic.internal.RegisteredTaskProvidersSupplier.get(RegisteredTaskProvidersSupplier.java:41)
+	at com.google.eclipse.mechanic.internal.RegisteredTaskProvidersSupplier.get(RegisteredTaskProvidersSupplier.java:1)
+	at com.google.eclipse.mechanic.DirectoryIteratingTaskScanner.scan(DirectoryIteratingTaskScanner.java:28)
+	at com.google.eclipse.mechanic.internal.RootTaskScanner.scan(RootTaskScanner.java:47)
+	at com.google.eclipse.mechanic.MechanicService.updateTasks(MechanicService.java:273)
+	at com.google.eclipse.mechanic.MechanicService.update(MechanicService.java:237)
+	at com.google.eclipse.mechanic.MechanicService.run(MechanicService.java:172)
+	at com.google.eclipse.mechanic.MechanicService.access$2(MechanicService.java:167)
+	at com.google.eclipse.mechanic.MechanicService$ServiceJob.run(MechanicService.java:374)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.google.eclipse.mechanic 2 0 2014-11-15 08:47:39.578
+!MESSAGE Directory 'C:\Users\gnishida\.eclipse\mechanic' does not exist.
+
+!ENTRY com.google.eclipse.mechanic 2 0 2014-11-15 08:47:39.580
+!MESSAGE Directory '\mechanic' does not exist.
+
+!ENTRY org.eclipse.jface 2 0 2014-11-15 08:47:59.606
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-11-15 08:47:59.606
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(com.python.pydev.analysis.actions.pyGlobalsBrowserWorkbench,Python Show Global Tokens (Global),
+		Python Show Global Tokens (Global),
+		Category(org.python.pydev.ui.category.source,PyDev - Editor,PyDev editor category,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1802ffef,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	com.python.pydev.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.python.pydev.editor.actions.pyShowBrowser,Python Show Global Tokens (Editor),
+		Python Show Global Tokens (Editor),
+		Category(org.python.pydev.ui.category.source,PyDev - Editor,PyDev editor category,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6cf0b039,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.python.pydev.ui.editor.scope,,,system)
