@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.10)  15 NOV 2014 17:05
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.9.10)  16 NOV 2014 19:06
 entering extended mode
 **D:/GitHub/MachineLearning3/tex-v1/hw-template.tex
 (D:/GitHub/MachineLearning3/tex-v1/hw-template.tex
@@ -350,7 +350,7 @@ Package pdftex.def Info: vc_dimension3-eps-converted-to.pdf used on input line
 (pdftex.def)             Requested size: 398.33858pt x 57.71155pt.
  [2 <D:/GitHub/MachineLearning3/tex-v1/vc_dimension1-eps-converted-to.pdf> <D:/
 GitHub/MachineLearning3/tex-v1/vc_dimension2-eps-converted-to.pdf>] [3 <D:/GitH
-ub/MachineLearning3/tex-v1/vc_dimension3-eps-converted-to.pdf>] [4]
+ub/MachineLearning3/tex-v1/vc_dimension3-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <gradient_descent.eps>
 (epstopdf)                    date: 2014-11-15 16:38:57
 (epstopdf)                    size: 68513 bytes
@@ -359,50 +359,72 @@ Package epstopdf Info: Source file: <gradient_descent.eps>
 (epstopdf)                    size: 30124 bytes
 (epstopdf)             Command: <epstopdf --outfile=gradient_descent-eps-conver
 ted-to.pdf gradient_descent.eps>
-(epstopdf)             \includegraphics on input line 221.
+(epstopdf)             \includegraphics on input line 228.
 Package epstopdf Info: Output file is already uptodate.
 
-<gradient_descent-eps-converted-to.pdf, id=70, 578.16pt x 433.62pt>
+<gradient_descent-eps-converted-to.pdf, id=67, 578.16pt x 433.62pt>
 File: gradient_descent-eps-converted-to.pdf Graphic file (type pdf)
 
 <use gradient_descent-eps-converted-to.pdf>
 Package pdftex.def Info: gradient_descent-eps-converted-to.pdf used on input li
-ne 221.
+ne 228.
 (pdftex.def)             Requested size: 341.43306pt x 256.07178pt.
- [5 <D:/GitHub/MachineLearning3/tex-v1/gradient_descent-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <learning_curve_l2_1.eps>
-(epstopdf)                    date: 2014-11-06 17:01:39
-(epstopdf)                    size: 24207 bytes
-(epstopdf)             Output file: <learning_curve_l2_1-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-11-13 16:22:56
-(epstopdf)                    size: 13839 bytes
-(epstopdf)             Command: <epstopdf --outfile=learning_curve_l2_1-eps-con
-verted-to.pdf learning_curve_l2_1.eps>
-(epstopdf)             \includegraphics on input line 282.
+Package epstopdf Info: Source file: <gradient_descent_oscillation.eps>
+(epstopdf)                    date: 2014-11-16 16:38:38
+(epstopdf)                    size: 24728 bytes
+(epstopdf)             Output file: <gradient_descent_oscillation-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2014-11-16 16:41:42
+(epstopdf)                    size: 17024 bytes
+(epstopdf)             Command: <epstopdf --outfile=gradient_descent_oscillatio
+n-eps-converted-to.pdf gradient_descent_oscillation.eps>
+(epstopdf)             \includegraphics on input line 235.
 Package epstopdf Info: Output file is already uptodate.
 
-<learning_curve_l2_1-eps-converted-to.pdf, id=107, 578.16pt x 433.62pt>
-File: learning_curve_l2_1-eps-converted-to.pdf Graphic file (type pdf)
+<gradient_descent_oscillation-eps-converted-to.pdf, id=68, 578.16pt x 433.62pt>
+File: gradient_descent_oscillation-eps-converted-to.pdf Graphic file (type pdf)
 
-<use learning_curve_l2_1-eps-converted-to.pdf>
-Package pdftex.def Info: learning_curve_l2_1-eps-converted-to.pdf used on input
- line 282.
-(pdftex.def)             Requested size: 398.33858pt x 298.75482pt.
- [6] [7 <D:/GitHub/MachineLearning3/tex-v1/learning_curve_l2_1-eps-converted-to
-.pdf>]
+<use gradient_descent_oscillation-eps-converted-to.pdf>
+Package pdftex.def Info: gradient_descent_oscillation-eps-converted-to.pdf used
+ on input line 235.
+(pdftex.def)             Requested size: 341.43306pt x 256.07178pt.
+ [4] [5] [6 <D:/GitHub/MachineLearning3/tex-v1/gradient_descent-eps-converted-t
+o.pdf> <D:/GitHub/MachineLearning3/tex-v1/gradient_descent_oscillation-eps-conv
+erted-to.pdf>]
+Package epstopdf Info: Source file: <performance_hyperparameter.eps>
+(epstopdf)                    date: 2014-11-16 18:34:20
+(epstopdf)                    size: 26962 bytes
+(epstopdf)             Output file: <performance_hyperparameter-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2014-11-16 18:36:23
+(epstopdf)                    size: 18740 bytes
+(epstopdf)             Command: <epstopdf --outfile=performance_hyperparameter-
+eps-converted-to.pdf performance_hyperparameter.eps>
+(epstopdf)             \includegraphics on input line 244.
+Package epstopdf Info: Output file is already uptodate.
+
+<performance_hyperparameter-eps-converted-to.pdf, id=145, 578.16pt x 433.62pt>
+File: performance_hyperparameter-eps-converted-to.pdf Graphic file (type pdf)
+
+<use performance_hyperparameter-eps-converted-to.pdf>
+Package pdftex.def Info: performance_hyperparameter-eps-converted-to.pdf used o
+n input line 244.
+(pdftex.def)             Requested size: 426.79134pt x 320.09303pt.
+ [7 <D:/GitHub/MachineLearning3/tex-v1/performance_hyperparameter-eps-converted
+-to.pdf>] [8] [9]
 (D:\GitHub\MachineLearning3\tex-v1\hw-template.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3062 strings out of 493921
- 42642 string characters out of 3144867
- 111466 words of memory out of 3000000
- 6281 multiletter control sequences out of 15000+200000
- 10803 words of font info for 40 fonts, out of 3000000 for 9000
+ 3082 strings out of 493921
+ 43172 string characters out of 3144867
+ 113506 words of memory out of 3000000
+ 6300 multiletter control sequences out of 15000+200000
+ 13104 words of font info for 50 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 44i,9n,24p,682b,444s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,9n,24p,968b,444s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
 C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:
@@ -413,10 +435,11 @@ ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program
 les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on hw-template.pdf (7 pages, 266466 bytes).
+)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on hw-template.pdf (9 pages, 302175 bytes).
 PDF statistics:
- 177 PDF objects out of 1000 (max. 8388607)
+ 233 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -78,7 +78,7 @@ def report(examples, features, w, vars, attr_types):
 		if examples[i].label == "+": y = 1
 		else: y = -1
 
-		if y * np.dot(w, features[i]) >= 1:
+		if y * np.dot(w, features[i]) >= 0:
 			correct += 1
 			if y == 1:
 				true_pos += 1
@@ -179,7 +179,7 @@ def GD(maxIterations, regularization, stepSize, lmbd, featureSet):
 		attr_values[attr_index] = []
 
 		#######################DEBUG######################
-		#if attr_types[attr_index] == "C": continue
+		if attr_types[attr_index] == "C": continue
 
 		if attr_types[attr_index] == "B":
 			for example in examples:
@@ -199,7 +199,7 @@ def GD(maxIterations, regularization, stepSize, lmbd, featureSet):
 	if featureSet == 1 or featureSet == 3:
 		for attr_index in xrange(len(attr_types)):
 			#######################DEBUG######################
-			#if attr_types[attr_index] == "C": continue
+			if attr_types[attr_index] == "C": continue
 
 			vars += buildFeatureSet(attr_index, attr_types[attr_index], attr_values[attr_index])
 
@@ -232,6 +232,7 @@ def GD(maxIterations, regularization, stepSize, lmbd, featureSet):
 	# compute the feature vectors for all the examples
 	if not featureComputed:
 		trainFeatures = _x(attr_types, vars, examples)
+		print("features are computed.")
 
 		if debug:
 			for trainFeature in trainFeatures:
@@ -276,21 +277,21 @@ def GD(maxIterations, regularization, stepSize, lmbd, featureSet):
 
 
 		##############################
-		#L = 1/2 * lmbd * np.dot(w[1:len(w)-1], w[1:len(w)-1])
-		#for d in xrange(len(examples)):
-		#	# get the true label
-		#	y = -1
-		#	if examples[d].label == "+": y = 1
+		L = 1/2 * lmbd * np.dot(w[1:len(w)-1], w[1:len(w)-1])
+		for d in xrange(len(examples)):
+			# get the true label
+			y = -1
+			if examples[d].label == "+": y = 1
 
-		#	L = L + max(0, 1 - y * np.dot(w, trainFeatures[d]))
+			L = L + max(0, 1 - y * np.dot(w, trainFeatures[d]))
 
-		#list_L.append(L)
+		list_L.append(L)
 		#list_w.append(np.dot(w[1:len(w)-1], w[1:len(w)-1]))
 
-		#if abs(L - prevL) < threshold:
-			#maxIterations = iter+1
-			#break
-		#prevL = L
+		if abs(L - prevL) < threshold:
+			maxIterations = iter+1
+			break
+		prevL = L
 
 
 	##################################
@@ -301,6 +302,7 @@ def GD(maxIterations, regularization, stepSize, lmbd, featureSet):
 	#plt.savefig("GD_" + str(stepSize) + "_" + str(lmbd) + ".eps")
 	#plt.show()
 
+	w = w / np.dot(w[1:len(w)-1], w[1:len(w)-1])
 
 	ret = []
 	#print("============== test on the training data ========")
@@ -344,8 +346,9 @@ def readData(filename):
 	return examples
 
 def findBestHyperparameters(regularization, featureSet):
-	stepSizeList = [0.1, 0.01, 0.001, 0.0001]
-	lambdaList = [0.001, 0.01, 0.1, 1]
+	#stepSizeList = [0.1, 0.01, 0.001, 0.0001]
+	stepSizeList = [0.1, 0.01, 0.001]
+	lambdaList = [0.001, 0.01, 0.1, 1, 10, 100]
 
 	featureComputed = False
 
@@ -363,9 +366,10 @@ def findBestHyperparameters(regularization, featureSet):
 		list_performance = []
 
 		for lmbd in lambdaList:
-			print("stepSize: " + str(stepSize) + ", lambda: " + str(lmbd))
-
 			(results, w) = GD(10000, regularization, stepSize, lmbd, featureSet)
+
+			print("stepSize: " + str(stepSize) + ", lambda: " + str(lmbd) + ", accuracy=" + str(results[1][perfType]) + ", accuracy=" + str(results[2][perfType]))
+
 			if results[1][perfType] > best_performance:
 				best_performance = results[1][perfType]
 				best_results = results
@@ -388,11 +392,66 @@ def findBestHyperparameters(regularization, featureSet):
 	print("accuracy: " + str(best_results[2][0]) + " / precision: " +  str(best_results[2][1]) + " / recall: " + str(best_results[2][2]) + " / F1: " + str(best_results[2][3]))
 
 	# show the accuracy graph
-	plt.title("Performance of learned hypothesis (" + regularization + ", featureSet=" + str(featureSet))
+	plt.title("Performance (" + regularization + ", featureSet=" + str(featureSet) + ")")
+	plt.xlabel("log(lambda)")
+	plt.ylabel("accuracy")
 	plt.ylim(0, 1.0)
 	plt.legend(loc='lower left')
 
 	plt.savefig("performance_" + regularization + "_" + str(featureSet) + ".eps")
+
+	plt.show()
+
+def compareRegularization(stepSize, featureSet):
+	lambdaList = [0.01, 0.05, 0.1, 0.5, 1]
+
+	featureComputed = False
+
+	# use the accuracy to draw the learning curve
+	perfType = 0
+
+	best_performance = -1
+	best_stepSize = 0
+
+	best_results = []
+
+	for regularization in ["l1", "l2"]:
+		list_lambda = []
+		list_performance = []
+
+		for lmbd in lambdaList:
+			(results, w) = GD(10000, regularization, stepSize, lmbd, featureSet)
+
+			print("stepSize: " + str(stepSize) + ", lambda: " + str(lmbd) + ", accuracy=" + str(results[1][perfType]) + ", accuracy=" + str(results[2][perfType]))
+
+			if results[1][perfType] > best_performance:
+				best_performance = results[1][perfType]
+				best_results = results
+				best_stepSize = stepSize
+				best_labmda = lmbd
+
+			list_lambda.append(math.log(lmbd))
+			list_performance.append(results[1][perfType])
+
+		plt.plot(list_lambda, list_performance, "-", label="regularization=" + regularization)
+
+
+	# show the best
+	print("=== Training data ===")
+	print("accuracy: " + str(best_results[0][0]) + " / precision: " +  str(best_results[0][1]) + " / recall: " + str(best_results[0][2]) + " / F1: " + str(best_results[0][3]))
+	print("=== Validation data ===")
+	print("accuracy: " + str(best_results[1][0]) + " / precision: " +  str(best_results[1][1]) + " / recall: " + str(best_results[1][2]) + " / F1: " + str(best_results[1][3]))
+	print("=== Test data ===")
+	print("accuracy: " + str(best_results[2][0]) + " / precision: " +  str(best_results[2][1]) + " / recall: " + str(best_results[2][2]) + " / F1: " + str(best_results[2][3]))
+
+	# show the accuracy graph
+	plt.title("Comparison (featureSet=" + str(featureSet) + ")")
+	plt.xlabel("log(lambda)")
+	plt.ylabel("accuracy")
+	plt.ylim(0, 1.0)
+	plt.legend(loc='lower left')
+
+	plt.savefig("comparison_" + str(featureSet) + ".eps")
 
 	plt.show()
 
@@ -471,11 +530,14 @@ if __name__ == '__main__':
 	# this flag is to avoid the redundant computation when extracting feature vectors
 	featureComputed = False
 
-	#(results, w) = GD(20000, "l2", 0.0001, 0.01, 1)
-	#print(results)
+	(results, w) = GD(20000, "l1", 0.01, 0.1, 1)
+	print(results)
 
 	# find the best lambda
-	findBestHyperparameters("l1", 2)
+	#findBestHyperparameters("l1", 1)
+
+	# compare l1/l2
+	#compareRegularization(0.1, 2)
 
 	# draw learning curves for each featureSet type
 	#drawLearningCurve(range(1, 1500, 200), "l1", 1, "result_l1_1.eps")

@@ -1840,3 +1840,141 @@ Binding(CTRL+SHIFT+T,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.python.pydev.ui.editor.scope,,,system)
+
+!ENTRY org.python.pydev.shared_core 4 4 2014-11-16 18:17:55.501
+!MESSAGE ERROR reading shell.
+ProcessInfo:
+
+ - Executed: C:\Anaconda\python.exe -u C:\Program Files\Brainwy\LiClipse 1.0.0\plugins\org.python.pydev_3.6.0.201406221719\pysrc\pycompletionserver.py 60526
+
+ - Environment:
+ALLUSERSPROFILE=C:\ProgramData
+APPDATA=C:\Users\gnishida\AppData\Roaming
+BOOST2_ROOT=C:\Program Files (x86)\boost\boost_1_47
+BOOST3_ROOT=C:\Program Files (x86)\boost\boost_1_44
+BOOST_ROOT=C:\boost_1_53\
+CG_BIN_PATH=C:\Program Files (x86)\NVIDIA Corporation\Cg\bin
+CG_INC_PATH=C:\Program Files (x86)\NVIDIA Corporation\Cg\include
+CG_LIB_PATH=C:\Program Files (x86)\NVIDIA Corporation\Cg\lib
+CLASSPATH=.;C:\Program Files (x86)\Java\jre6\lib\ext\QTJava.zip;C:\Program Files (x86)\OpenNI\Bin\org.OpenNI.jar;D:\PCL 1.6.0\OpenNI\Bin64\org.OpenNI.jar
+CLIENTNAME=YUTO-PC
+COMMONPROGRAMFILES(X86)=C:\Program Files (x86)\Common Files
+COMMONPROGRAMFILES=C:\Program Files\Common Files
+COMMONPROGRAMW6432=C:\Program Files\Common Files
+COMPUTERNAME=LUCY
+COMSPEC=C:\Windows\system32\cmd.exe
+CUDA_BIN_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin
+CUDA_INC_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\include
+CUDA_LIB_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\lib\x64
+CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\
+CUDA_PATH_V4_0=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.0\
+CUDA_PATH_V4_1=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.1\
+CUDA_PATH_V4_2=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.2\
+CUDA_PATH_V5_0=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\
+CV_ROOT=D:\GitHub\QtUrban\opencv
+FBX_SDK_PATH=C:\Program Files\Autodesk\FBX\FbxSdk\2012.1
+FP_NO_HOST_CHECK=NO
+FWTOOLS_ROOT=C:\Program Files (x86)\FWTools2.4.7
+G3D9DATA=D:\CS334\G3D9\data
+GDAL_DATA=C:\Program Files (x86)\MapWindow\gdal_data
+GLEW_HOME=D:\GitHub\QtUrban\glew\
+GS_PROG=C:\Program Files (x86)\gs\gs8.64\bin
+HOMEDRIVE=C:
+HOMEPATH=\Users\gnishida
+IMAGE_MAGICK=C:\Program Files (x86)\ImageMagick-6.7.9-Q16
+LOCALAPPDATA=C:\Users\gnishida\AppData\Local
+LOGONSERVER=\\TARDIS
+NUMBER_OF_PROCESSORS=8
+NVCUDASAMPLES5_0_ROOT=C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\
+NVCUDASAMPLES_ROOT=C:\ProgramData\NVIDIA Corporation\CUDA Samples\v5.0\
+NVSDKCOMPUTE_ROOT=C:\ProgramData\NVIDIA Corporation\NVIDIA GPU Computing SDK 4.2
+NVTOOLSEXT_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\nvToolsExt\
+OPEN_NI_BIN64=D:\PCL 1.6.0\OpenNI\Bin64
+OPEN_NI_BIN=C:\Program Files (x86)\OpenNI\Bin
+OPEN_NI_INCLUDE=D:\PCL 1.6.0\OpenNI\Include
+OPEN_NI_INSTALL_PATH64=D:\PCL 1.6.0\OpenNI\
+OPEN_NI_INSTALL_PATH=C:\Program Files (x86)\OpenNI\
+OPEN_NI_LIB64=D:\PCL 1.6.0\OpenNI\Lib64
+OPEN_NI_LIB=C:\Program Files (x86)\OpenNI\Lib
+OS=Windows_NT
+PATH=C:/Program Files/Brainwy/LiClipse 1.0.0/jre/bin/server;C:/Program Files/Brainwy/LiClipse 1.0.0/jre/bin;C:/Program Files/Brainwy/LiClipse 1.0.0/jre/lib/amd64;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\libnvvp\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\ImageMagick-6.7.9-Q16;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.2\\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.2\libnvvp\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Gstools\Gsscript\8.61\gs8.61\bin;C:\Program Files\Gstools\GSView\4.8\gsview;C:\Program Files\VanDyke Software\Clients\;C:\Program Files (x86)\Microsoft SQL Server\90\Tools\binn\;C:\Qt\4.7.0\bin;C:\Program Files\System Center Operations Manager 2007\;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\MATLAB\R2012a\runtime\win64;C:\Program Files\MATLAB\R2012a\bin;C:\Program Files\MATLAB\R2010a\runtime\win64;C:\Program Files\MATLAB\R2010a\bin;C:\Program Files (x86)\OpenNI\Bin;C:\Qt\4.8.1\bin;C:\ProgramData\NVIDIA Corporation\NVIDIA GPU Computing SDK 4.2\C\common\bin;C:\Program Files (x86)\Git\cmd;D:\PCL 1.6.0\OpenNI\Bin64;D:\PCL 1.6.0\bin;C:\Program Files (x86)\FastSum;D:\CS334\G3D9\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\;C:\Anaconda;C:\Anaconda\Scripts;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.0\libnvvp\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\ImageMagick-6.7.9-Q16;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.2\\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v4.2\libnvvp\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Gstools\Gsscript\8.61\gs8.61\bin;C:\Program Files\Gstools\GSView\4.8\gsview;C:\Program Files\VanDyke Software\Clients\;C:\Program Files (x86)\Microsoft SQL Server\90\Tools\binn\;C:\Qt\4.7.0\bin;C:\Program Files\System Center Operations Manager 2007\;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\MATLAB\R2012a\runtime\win64;C:\Program Files\MATLAB\R2012a\bin;C:\Program Files\MATLAB\R2010a\runtime\win64;C:\Program Files\MATLAB\R2010a\bin;C:\Program Files (x86)\OpenNI\Bin;C:\Qt\4.8.1\bin;C:\ProgramData\NVIDIA Corporation\NVIDIA GPU Computing SDK 4.2\C\common\bin;C:\Program Files (x86)\Git\cmd;D:\PCL 1.6.0\OpenNI\Bin64;D:\PCL 1.6.0\bin;C:\Program Files (x86)\FastSum;D:\CS334\G3D9\bin;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\;C:\Qt\4.8.1\bin;D:\GitHub\QtUrban\opencv;C:\Qt\4.8.1\lib;C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin;D:\GitHub\QtUrban\glew\\bin;D:\GitHub\QtUrban\opencv;C:\Program Files (x86)\ImageMagick-6.7.9-Q16;C:\Python34\;C:\Program Files\Brainwy\LiClipse 1.0.0;
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+PCL_ROOT=D:\PCL 1.6.0
+POSTGRESQL_ROOT=C:\Program Files (x86)\PostgreSQL\9.0
+PROCESSOR_ARCHITECTURE=AMD64
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 26 Stepping 5, GenuineIntel
+PROCESSOR_LEVEL=6
+PROCESSOR_REVISION=1a05
+PROGRAMDATA=C:\ProgramData
+PROGRAMFILES(X86)=C:\Program Files (x86)
+PROGRAMFILES=C:\Program Files
+PROGRAMW6432=C:\Program Files
+PROJ_LIB=C:\Program Files (x86)\MapWindow\PROJ_NAD
+PROMPT=$P$G
+PSMODULEPATH=C:\Windows\system32\WindowsPowerShell\v1.0\Modules\
+PUBLIC=C:\Users\Public
+PYTHONPATH=C:\Program Files\Brainwy\LiClipse 1.0.0\plugins\org.python.pydev_3.6.0.201406221719\pysrc\pydev_sitecustomize;C:\Anaconda\lib\site-packages\gensim-0.10.2-py2.7-win-amd64.egg;C:\Anaconda\lib\site-packages\setuptools-1.3.2-py2.7.egg;C:\Anaconda\DLLs;C:\Anaconda\lib;C:\Anaconda\lib\lib-tk;C:\Anaconda;C:\Anaconda\lib\site-packages;C:\Anaconda\lib\site-packages\PIL;C:\Anaconda\lib\site-packages\win32;C:\Anaconda\lib\site-packages\win32\lib;C:\Anaconda\lib\site-packages\Pythonwin;C:\Anaconda\lib\site-packages\runipy-0.1.0-py2.7.egg
+PYTHON_ROOT=C:\Python26
+QMAKESPEC=win32-msvc2010
+QTDIR64=C:\Qt\4.8.1
+QTDIR=C:\Qt\4.8.1
+QTJAVA=C:\Program Files (x86)\Java\jre6\lib\ext\QTJava.zip
+QWT_ROOT=C:\Qt\Qwt
+SESSIONNAME=RDP-Tcp#0
+SYSTEMDRIVE=C:
+SYSTEMROOT=C:\Windows
+TEMP=C:\Users\gnishida\AppData\Local\Temp
+TMP=C:\Users\gnishida\AppData\Local\Temp
+UGII_3DCONNEXION_LIBRARY=%UGII_BASE_DIR%\ugalliance\vendor\startup\3DxNX.dll
+USERDNSDOMAIN=AD.CS.PURDUE.EDU
+USERDOMAIN=SERVERS
+USERNAME=gnishida
+USERPROFILE=C:\Users\gnishida
+VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\
+VS100COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\
+VS110COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\
+VS120COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\
+VS90COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\Tools\
+WINDIR=C:\Windows
+WINDOWSSDKDIR=C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\
+
+ - Working Dir:
+C:\Program Files\Brainwy\LiClipse 1.0.0\plugins\org.python.pydev_3.6.0.201406221719\pysrc
+
+ - OS:
+Windows 7
+
+ - Std output:
+
+
+ - Err output:
+
+!STACK 0
+java.nio.channels.ClosedByInterruptException
+	at java.nio.channels.spi.AbstractInterruptibleChannel.end(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.write(Unknown Source)
+	at java.nio.channels.Channels.writeFullyImpl(Unknown Source)
+	at java.nio.channels.Channels.writeFully(Unknown Source)
+	at java.nio.channels.Channels.access$000(Unknown Source)
+	at java.nio.channels.Channels$1.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.write(AbstractShell.java:544)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.writeAndGetResults(AbstractShell.java:691)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.getLineCol(AbstractShell.java:776)
+	at org.python.pydev.editor.codecompletion.revisited.modules.CompiledModule.findDefinition(CompiledModule.java:596)
+	at org.python.pydev.editor.codecompletion.revisited.modules.AbstractModule.findDefinition(AbstractModule.java:1)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findGlobalTokDef(SourceModule.java:1050)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinitionsFromModAndTok(SourceModule.java:923)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinition(SourceModule.java:905)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinition(SourceModule.java:664)
+	at org.python.pydev.editor.codecompletion.revisited.modules.AbstractModule.findDefinition(AbstractModule.java:1)
+	at org.python.pydev.editor.codecompletion.revisited.modules.CompiledModule.findDefinition(CompiledModule.java:640)
+	at org.python.pydev.editor.codecompletion.revisited.modules.AbstractModule.findDefinition(AbstractModule.java:1)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinition(SourceModule.java:887)
+	at org.python.pydev.editor.codecompletion.revisited.modules.SourceModule.findDefinition(SourceModule.java:664)
+	at org.python.pydev.editor.codecompletion.revisited.modules.AbstractModule.findDefinition(AbstractModule.java:1)
+	at org.python.pydev.editor.refactoring.PyRefactoringFindDefinition.findActualDefinition(PyRefactoringFindDefinition.java:177)
+	at org.python.pydev.editor.refactoring.PyRefactoringFindDefinition.findActualDefinition(PyRefactoringFindDefinition.java:79)
+	at org.python.pydev.editor.hover.PyTextHover.getDocstringHover(PyTextHover.java:206)
+	at org.python.pydev.editor.hover.PyTextHover.getHoverInfo(PyTextHover.java:150)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
