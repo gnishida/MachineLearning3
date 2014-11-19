@@ -97,7 +97,7 @@ Thus,
 \[
 VC(k) \ge VC(k-1)+2=2(k-1)+2=2k
 \]
-Therefore, $VC(k)$ is at least $2k$ by induction. Also, Figure \ref{fig:vc_dimension3} shows a case in which $k+1$ positive examples and $k$ negative examples cannot be correctly classified. This concludes $VC(k) = 2k$.
+Therefore, $VC(k)$ is at least $2k$ by induction. Also, Figure \ref{fig:vc_dimension3} shows a case in which $k+1$ positive examples and $k$ negative examples cannot be correctly classified. Thus, $VC(k) < 2k+1$. This concludes $VC(k) = 2k$.
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=140mm]{vc_dimension3}
@@ -111,11 +111,11 @@ Therefore, $VC(k)$ is at least $2k$ by induction. Also, Figure \ref{fig:vc_dimen
 \begin{enumerate}
 \item Write in one sentence: what are the hyper parameters of the GD algorithm.
 
-The hyper parameters are the initial weight vector which you can randomly initialize if you want, learning rate that is the step size of updating the weight vector, a parameter $\lambda$ that defines the impact of the regularizer, and the convergence criteria when to stop the iteration such as the maximum number of iterations.
+The hyper parameters are 1) how to define the initial parameters: initializing 0 or randomly, 2) the learning rate that is the step size of updating the parameters, and 3) the convergence criteria when to stop the iteration such as the maximum number of iterations and a threshold to judge whether it is coverged.
 
 \item Write in one sentence: What is the difference between $l1$ and $l2$ regularization.
 
-$l1$ regularization uses $l1$ norm of $w$ as the regularization term, which encourages the sparsity, while $l2$ regularization uses $l2$ norm of $w$.
+$l1$ regularization uses $l1$ norm of $w$ as the regularization term, which encourages the sparsity and leads to a simpler model, while $l2$ regularization uses $l2$ norm of $w$.
 
 \item Write down the gradient descent algorithm applied to hinge loss with $l2$ regularization.
 
@@ -138,8 +138,6 @@ $l1$ regularization uses $l1$ norm of $w$ as the regularization term, which enco
 \State $w=w+\eta \Delta w$
 \State $b=b+\eta \Delta b$
 \EndFor
-\State $w=w/\|w\|$
-\State $b=b/\|w\|$
 \State \Return $w$ and $b$
 \EndProcedure
 \end{algorithmic}
@@ -166,12 +164,7 @@ and
 \end{cases}
 \]
 
-The algorithm is shown in Algorithm 1. Note that $w$ and $b$ are normalized in the end since our original objective was to maximize the margin while $\|w\|$=1 as follows:
-\[
-w={\rm arg}\max_{\|w\|=1} \left[ \min_{(x,y)\in S} y(w^T x+b) \right]
-\]
-
-
+The algorithm is shown in Algorithm 1.
 
 \end{enumerate}
 
@@ -209,9 +202,8 @@ For the programming assignment, I used SVM with the hinge loss function and $l1$
 \EndIf
 \State $w=w+\eta \Delta w$
 \State $b=b+\eta \Delta b$
+\State \Return $w$ and $b$ if they are converged
 \EndFor
-\State $w=w/\|w\|$
-\State $b=b/\|w\|$
 \State \Return $w$ and $b$
 \EndProcedure
 \end{algorithmic}
@@ -221,43 +213,43 @@ For the programming assignment, I used SVM with the hinge loss function and $l1$
 For the continuous values, I used all the intervals between two consequtive thresholds as attributes. For instance, if an original attribute $a$ has three thresholds ${1, 2, 3}$, then the corresponding attributes will be $\{(a<1),(a\ge 1; a<2),(a\ge 2; a<3),(a\ge 3)\}$. Also, I ignored the examples that contain missing values.
 
 \subsection*{Hyper Parameters}
-There are five hyper parameters, $maxIterations$, $l1$ or $l2$, $stepSize$, $lambda$, and feature set. Unlike Perceptron algorithm, we want to minimize the objective function without worrying about overfitting because the regularization term somewhat avoids it. Thus, I used a very large number for maxIterations, say 20000, to get the gradient descent converged. For instance, Figure \ref{fig:gradient_descent} shows the decrease of the objective function over the steps when $stepSize=0.0001$ and $labmda=0.01$, while Figure \ref{fig:gradient_descent_oscillation} shows some oscillation because of larger $stepSize$. Intuitively, wa do not want too much oscillation, but small $stepSize$ requires a large number of iterations to converge. The result of Figure \ref{fig:gradient_descent} indicates that $maxIterations=20000$ is enough to converge even for a very small $stepSize$.
+There are five hyper parameters, $maxIterations$, $l1$ or $l2$, $stepSize$, $lambda$, and feature set. Unlike Perceptron algorithm, we want to minimize the objective function without worrying about overfitting because the regularization term takes care of it. Thus, I used a very large number for maxIterations, say 20000, to get the gradient descent converged. Also, as it is shown in Algorithm 2, I checked the decrease in the objective function during the gradient descent and if it is within the threshold, the gradient descent stops. I used 0.0001 as threshold. Figure \ref{fig:gradient_descent} ($featureSet=1$, $stepSize=0.001$, and $labmda=0.4$) and \ref{fig:gradient_descent_large_lambda_1} ($featureSet=2$, $stepSize=0.001$, and $labmda=1.0$) show the decrease of the objective function over the iterations. A large $stepSize$ leads to more oscillation while a small $stepSize$ requires a large number of iterations to converge. The result of Figure \ref{fig:gradient_descent} indicates that $maxIterations=20000$ is enough to converge even for a very small $stepSize$ for this problem.
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=120mm]{gradient_descent}
-\caption{This figure shows the descrese of the objective over the steps when $stepSize=0.0001$ and $labmda=0.01$.}
+\caption{This figure shows the descrese of the objective over the iterations when $featureSet=1$, $stepSize=0.001$, and $labmda=0.4$.}
 \label{fig:gradient_descent}
 \end{figure}
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=120mm]{gradient_descent_oscillation}
-\caption{This figure shows the descrese of the objective over the steps when $stepSize=0.1$ and $labmda=0.1$. As $stepSize$ is relatively large, some oscillation occured.}
-\label{fig:gradient_descent_oscillation}
+\includegraphics[width=120mm]{gradient_descent_large_lambda_1}
+\caption{This figure shows the decrese in the objective over the iterations when $featureSet=2$, $stepSize=0.001$, and $lambda=1.0$.}
+\label{fig:gradient_descent_large_lambda_1}
 \end{figure}
 
-For other hyperparameters, I employed a brute-force approach to find the best ones. For each combination of $regularization$ and $featureSet$, I tried all the combination of $stepSize \in \{0.0001, 0.001, 0.01, 0.1\}$ and $labmda \in \{0.001, 0.01, 0.1, 1\}$ in order to find the best ones that achieved the best accuracy on the validation data. One of the results are shown in Figure \ref{fig:performance_hyperparameter}. Notice that the performance varies depending on $stepSize$ and $lambda$ although the difference is not significant. High $lambda$ resulted in relatively poor performance probably because it weighs less on the loss penalty, but we also want to have relatively large $lambda$ in order to avoid overfitting.
+For $stepSize$ and $lambda$, I employed a brute-force approach to find the best values. For each combination of $regularization$ and $featureSet$, I tried all the combination of $stepSize \in \{0.001, 0.01, 0.1\}$ and $labmda \in \{0.05, 0.1, 0.2, 0.4, 1.0, 2.0\}$ in order to find the optimal values that achieve the best accuracy on the validation data. One of the results are shown in Figure \ref{fig:performance_hyperparameter}. Notice that the performance significantly decreases when $lambda \ge 1$. This is resonable because the loss function becomes less important in the objective function. A large $lambda$ avoids overfitting but may deteriorate the performance, while a small $lambda$ can achieve better performance but may results in overfitting. Since we do not know the distribution of the test dataset beforehand, it is reasonable to use the performance on the validation data to choose values of $labmda$ as well as other hyperparameters. Note that if the distribution of the test dataset is significantly different from the validation dataset, then the selected values of hyperparameters cannot necessarily yield a good performance on the test dataset.
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=150mm]{performance_hyperparameter}
-\caption{This figure shows the accuracy over the validation data using different pairs of $stepSize$ and $lambda$ when $regularization=l1$ and $featureSet=1$. The performance drastically decreases when $lambda > 1$.}
+\caption{This figure shows the accuracy over the validation data using different pairs of $stepSize$ and $lambda$ when $regularization=l2$ and $featureSet=1$. The performance drastically decreases when $lambda > 1$.}
 \label{fig:performance_hyperparameter}
 \end{figure}
 
-The best pairs of $stepSize$ and $labmda$ are listed in Table \ref{tab:best_hyperparameters}. For the following performance test over the test datset, I chose $lambda=0.1$ because large $lambda$ avoids overfitting, and $stepSize=0.01$ was used to reduce the number of iterations to converge.
+The optimal values of $stepSize$ and $labmda$ that achieved the best performance on the validation data are listed in Table \ref{tab:best_hyperparameters}. For the following performance test, I used those values for hyperparameters.
 
 \begin{table}[htb]
   \begin{center}
   \begin{tabular}{|c|c||c|c|} \hline
     featureSet & regularization & best stepSize & best  lambda \\ \hline
-    1 & 11 & 0.01 & 0.1 \\ \hline
-    1 & 12 & 0.1 & 0.1 \\ \hline
-    2 & 11 & 0.1 & 0.01 \\ \hline
-    2 & 12 & 0.01 & 0.1 \\ \hline
-    3 & 11 & 0.1 & 0.01 \\ \hline
-    3 & 12 & 0.1 & 0.01 \\ \hline
+    1 & 11 & 0.001 & 0.4 \\ \hline
+    1 & 12 & 0.001 & 0.4 \\ \hline
+    2 & 11 & 0.001 & 0.1 \\ \hline
+    2 & 12 & 0.001 & 0.2 \\ \hline
+    3 & 11 & 0.001 & 0.05 \\ \hline
+    3 & 12 & 0.001 & 0.1 \\ \hline
   \end{tabular}
   \caption{The best combination of $stepSize$ and $lambda$}
   \label{tab:best_hyperparameters}
@@ -265,88 +257,93 @@ The best pairs of $stepSize$ and $labmda$ are listed in Table \ref{tab:best_hype
 \end{table}
 
 \subsection*{Results}
-Using $stepSize=0.01$ and $lambda=0.1$, the classifier was learned and the performance was evaluated against the test data. The results are shown in Tables 2-6. Note that the performance of $featureSet=2$ is very close to or exactly same as the one of $featureSet=3$. This implies that the feature pairs have much larger weighs than the original attributes when $featuerSet=3$ is used. Also, it is surprising that $featureSet=1$ yields the best performance. The possible reason is that the feature pairs cause the overfitting. 
+Using the selected values of $stepSize$ and $lambda$ for each $featureSet$ and $regularization$, the classifier was learned and the performance was evaluated on the training, validation, and test dataset. The results are shown in Tables 2-7. Note that the performance of $featureSet=2$ is very close to the one of $featureSet=3$. This implies that the feature pairs have much larger weighs than the original attributes when $featuerSet=3$ is used. Also, it is surprising that $featureSet=1$ yields the best performance. The possible reason is that the feature pairs cause the overfitting even though the regularizer is included in the objective.
 
-\begin{table}[htb]
+\begin{table}[!h]
   \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
     dataset & accuracy & precision & recall & F1 \\ \hline
     training data & 1.0 & 1.0 & 1.0 & 1.0 \\ \hline
-    validation data & 0.951 & 0.928 & 0.962 & 0.945 \\ \hline
-    test data & 0.622 & 0.588 & 0.819 & 0.684 \\ \hline
+    validation data & 0.967 & 0.931 & 1.0 & 0.964 \\ \hline
+    test data & 0.614 & 0.583 & 0.803 & 0.675 \\ \hline
   \end{tabular}
   \caption{The results of featurSet=1 with $l1$ regularization}
   \label{tab:result_1_l1}
   \end{center}
 \end{table}
 
-\begin{table}[htb]
+\begin{table}[!h]
   \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
     dataset & accuracy & precision & recall & F1 \\ \hline
-    training data & 1.0 & 1.0 & 1.0 & 1.0 \\ \hline
-    validation data & 0.951 & 0.928 & 0.962 & 0.945 \\ \hline
-    test data & 0.622 & 0.590 & 0.803 & 0.680 \\ \hline
+    training data & 0.989 & 0.990 & 0.985 & 0.987 \\ \hline
+    validation data & 0.967 & 0.931 & 1.0 & 0.964 \\ \hline
+    test data & 0.598 & 0.571 & 0.786 & 0.662 \\ \hline
   \end{tabular}
   \caption{The results of featurSet=1 with $l2$ regularization}
   \label{tab:result_1_l2}
   \end{center}
 \end{table}
 
-\begin{table}[htb]
+\begin{table}[!h]
   \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
     dataset & accuracy & precision & recall & F1 \\ \hline
     training data & 1.0 & 1.0 & 1.0 & 1.0 \\ \hline
     validation data & 0.967 & 0.931 & 1.0 & 0.964 \\ \hline
-    test data & 0.573 & 0.549 & 0.819 & 0.657 \\ \hline
+    test data & 0.590 & 0.560 & 0.836 & 0.671 \\ \hline
   \end{tabular}
   \caption{The results of featurSet=2 with $l1$ regularization}
   \label{tab:result_2_l1}
   \end{center}
 \end{table}
 
-\begin{table}[htb]
+\begin{table}[!h]
   \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
     dataset & accuracy & precision & recall & F1 \\ \hline
     training data & 1.0 & 1.0 & 1.0 & 1.0 \\ \hline
-    validation data & 0.956 & 0.928 & 0.962 & 0.945 \\ \hline
-    test data & 0.573 & 0.552 & 0.770 & 0.643 \\ \hline
+    validation data & 0.967 & 0.931 & 0.1.0 & 0.964 \\ \hline
+    test data & 0.606 & 0.573 & 0.836 & 0.680 \\ \hline
   \end{tabular}
   \caption{The results of featurSet=2 with $l2$ regularization}
   \label{tab:result_2_l2}
   \end{center}
 \end{table}
 
-\begin{table}[htb]
+\begin{table}[!h]
   \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
     dataset & accuracy & precision & recall & F1 \\ \hline
     training data & 1.0 & 1.0 & 1.0 & 1.0 \\ \hline
     validation data & 0.967 & 0.931 & 1.0 & 0.964 \\ \hline
-    test data & 0.573 & 0.549 & 0.819 & 0.657 \\ \hline
+    test data & 0.606 & 0.573 & 0.836 & 0.680 \\ \hline
   \end{tabular}
   \caption{The results of featurSet=3 with $l1$ regularization}
   \label{tab:result_3_l1}
   \end{center}
 \end{table}
 
-\begin{table}[htb]
+\begin{table}[!h]
   \begin{center}
   \begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
     dataset & accuracy & precision & recall & F1 \\ \hline
     training data & 1.0 & 1.0 & 1.0 & 1.0 \\ \hline
     validation data & 0.967 & 0.931 & 1.0 & 0.964 \\ \hline
-    test data & 0.573 & 0.549 & 0.819 & 0.657 \\ \hline
+    test data & 0.606 & 0.573 & 0.836 & 0.680 \\ \hline
   \end{tabular}
-  \caption{The results of featurSet=3 with $l1$ regularization}
+  \caption{The results of featurSet=3 with $l2$ regularization}
   \label{tab:result_3_l2}
   \end{center}
 \end{table}
 
 \subsection*{Impact by the regularizer $l1$ and $l2$}
-In general, $l1$ regularization results in a sparse weight vector. To confirm this, I compare the resulting weight vectors between $l1$ and $l2$. The number of components whose absolute value is greater than 0.01 is 7 when $l1$ regularizer is used, while it is 11 when $l2$ regularizer is used. This result confirms that $l1$ regularizer leads to a sparse weight vector.
+In general, $l1$ regularizer results in a sparse weight vector compared to $l2$ regularizer. To confirm this, for $featureSet=1$ I normalized the resulting weight vectors and compare them between $l1$ and $l2$. Out of 586 components of the weight vector, the number of components whose value is 0 is 313 when $l1$ regularizer is used, while it is 287 when $l2$ regularizer is used. This result confirms that $l1$ regularizer leads to a sparse weight vector. The sparsity is usually favorable because it leads to a simpler model, which indicates a more generalized model and requries less storage. Although it is known that $l1$ regularizer often leads to better performance in practice, there is usualy not a considerable difference between the two methods in terms of the accuracy of the resulting model \cite{gao2007, tsuruoka2009}. In fact, there is no significant difference in performace between $l1$ and $l2$ in the results.
+
+\begin{thebibliography}{9}
+\bibitem{gao2007} Gao, J., Andrew, G., Johnson, M., Toutanova, K. 2007. A comparative study of parameter estimation methods for statistical natural language processing. In {\it Proceedings of ACL}, pp. 824 - 831.
+\bibitem{tsuruoka2009} Tsuruoka, Y., Tsujii, J., Ananiadou, S. 2009. Stochastic gradient descent training for l1-regularized log-linear models with cummulative penality. In {\it Proceedings of ACL}, pp. 477 - 485.
+\end{thebibliography}
 
 \end{document}
 

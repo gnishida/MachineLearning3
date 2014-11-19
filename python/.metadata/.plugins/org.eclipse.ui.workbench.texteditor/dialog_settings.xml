@@ -13,8 +13,10 @@
 		<item value="false" key="isRegEx"/>
 		<item value="true" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="buildFeatureSet" key="selection"/>
+		<item value="list_" key="selection"/>
 		<list key="findhistory">
+			<item value="list_w"/>
+			<item value="w_list"/>
 			<item value="buildFeatureSet"/>
 			<item value="math"/>
 			<item value="max_maxIterations"/>

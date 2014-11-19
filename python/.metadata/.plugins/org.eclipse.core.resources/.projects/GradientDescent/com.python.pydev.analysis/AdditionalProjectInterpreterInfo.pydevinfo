@@ -1,7 +1,7 @@
 -- VERSION_4
 -- START DISKCACHE
 D:\GitHub\MachineLearning3\python\.metadata\.plugins\org.eclipse.core.resources\.projects\GradientDescent\com.python.pydev.analysis\v2_indexcache
-GradientDescent|1416181626072|D:\GitHub\MachineLearning3\python\GradientDescent\GradientDescent.py
+GradientDescent|1416353718791|D:\GitHub\MachineLearning3\python\GradientDescent\GradientDescent.py
 -- END DISKCACHE
 -- START DICTIONARY
 3
@@ -10,29 +10,20 @@ GradientDescent|1416181626072|D:\GitHub\MachineLearning3\python\GradientDescent\
 3=Example.__init__
 -- END DICTIONARY
 -- START TREE 1
-22
+13
 GD|1|GD!10@
 _sg|1|_sgn!10@
 _x|1|_x!10@
 bui|1|buildFeatureSet!10@
-com|1|compareRegularization!10@
-cou|0|
 deb|1|debug!11@
-dra|1|drawLearningCurve!10@
 exa|1|Example!9@
 fea|1|featureComputed!11@
 fin|2|findBestHyperparameters!10@findThresholds!10@
-lis|0|
-max|0|
-nex|0|
-per|0|
 rea|1|readData!10@
 rep|1|report!10@
-res|1|results!11@
 tes|1|testFeatures!11@
 tra|1|trainFeatures!11@
 val|1|valFeatures!11@
-w|1|w!11@
 -- END TREE
 -- START TREE 2
 4
